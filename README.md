@@ -38,12 +38,26 @@ brew install claude-code
 # 一键安装核心配置（推荐）
 ./scripts/install-core.sh
 
-# 或手动复制
-mkdir -p ~/.claude/rules/common ~/.claude/agents ~/.claude/commands
-cp -r rules/common/*.md ~/.claude/rules/common/
-cp agents/*.md ~/.claude/agents/
-cp commands/*.md ~/.claude/commands/
+# 安装中文规则（让 Claude 用中文思考）
+./scripts/install-core.sh --chinese
+
+# 安装所有配置
+./scripts/install-core.sh --all
+
+# 安装指定语言规则
+./scripts/install-core.sh --lang python
 ```
+
+**安装选项说明**：
+
+| 选项 | 说明 |
+|------|------|
+| `--core` | 安装核心配置（默认） |
+| `--chinese` | 安装中文规则 (rules/zh/) |
+| `--all` | 安装全部配置 |
+| `--lang LANG` | 安装指定语言规则 |
+| `--agents` | 安装所有 Agents |
+| `--commands` | 安装所有 Commands |
 
 **按需安装语言规则**：
 ```bash
@@ -361,6 +375,7 @@ claude
 
 | 类别 | 数量 |
 |------|------|
+| 中文规则 | **10** (rules/zh/) |
 | 语言规则 | 11 种 × 5 = **55** |
 | 通用规则 | **7** 必装 / 11 总计 |
 | Agents | **30** |
