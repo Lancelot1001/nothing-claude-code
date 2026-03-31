@@ -1,7 +1,7 @@
 ---
 name: deployment-patterns
 description: 部署workflow process、CI/CD 流水线模式、Docker 容器化、健康检查、回滚策略以及 Web 应用程序的生产就绪检查清单。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 部署模式

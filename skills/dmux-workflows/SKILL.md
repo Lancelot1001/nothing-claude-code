@@ -1,7 +1,7 @@
 ---
 name: dmux-workflows
 description: 使用 dmux（AI agent的 tmux 面板管理器）进行多agent编排。在 Claude Code、Codex、OpenCode 和其他 harness 之间并行agentworkflow process的模式。在并行运行多个agent会话或协调多agent开发workflow process时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # dmux workflow process

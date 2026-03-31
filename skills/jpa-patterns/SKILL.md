@@ -1,7 +1,7 @@
 ---
 name: jpa-patterns
 description: Spring Boot 中的 JPA/Hibernate 模式：实体设计、关系、查询优化、事务、审计、索引、分页和连接池。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # JPA/Hibernate 模式

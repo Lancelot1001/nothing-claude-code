@@ -1,7 +1,7 @@
 ---
 name: agent-payment-x402
 description: 为 AI 智能体添加 x402 支付执行功能——通过 MCP 工具实现按任务预算、支出控制和非托管钱包。当智能体需要为 API、服务或其他智能体付费时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 智能体支付执行（x402）

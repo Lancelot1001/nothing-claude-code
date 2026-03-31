@@ -1,7 +1,7 @@
 ---
 name: investor-outreach
 description: 起草冷邮件、温暖介绍简介、跟进、更新邮件和投资者沟通，用于融资。当用户需要接触天使投资人、VC、战略投资者或加速器并需要简洁、个性化、面向投资者的信息时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 投资者外联

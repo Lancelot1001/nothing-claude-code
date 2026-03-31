@@ -1,7 +1,7 @@
 ---
 name: coding-standards
 description: 适用于 TypeScript、JavaScript、React 和 Node.js 开发的通用编码标准、最佳实践和模式。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 编码标准与最佳实践

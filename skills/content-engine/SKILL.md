@@ -1,7 +1,7 @@
 ---
 name: content-engine
 description: 为 X、LinkedIn、TikTok、YouTube、新闻通讯创建平台原生内容系统，以及再利用的多平台活动。当用户想要社交帖子、主题帖、脚本、内容日历或单一源素材跨平台干净适配时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 内容引擎

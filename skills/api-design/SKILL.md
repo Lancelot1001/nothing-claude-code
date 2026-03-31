@@ -1,7 +1,7 @@
 ---
 name: api-design
 description: REST API 设计模式，包括资源命名、状态码、分页、过滤、错误响应、版本控制和速率限制，适用于生产环境 API。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # API 设计模式

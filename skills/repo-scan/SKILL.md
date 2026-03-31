@@ -1,7 +1,7 @@
 ---
 name: repo-scan
 description: 跨技术栈源代码资产审计——对每个文件进行分类，检测嵌入式第三方库，并为每个模块提供可操作的四级裁决和交互式 HTML 报告。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # repo-scan

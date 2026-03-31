@@ -1,7 +1,7 @@
 ---
 name: perl-patterns
 description: Modern Perl 5.36+ idioms, best practices, and conventions for building robust, maintainable Perl applications.
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 现代 Perl 开发模式

@@ -1,7 +1,7 @@
 ---
 name: ai-regression-testing
 description: AI 辅助开发的回归测试策略。无需数据库依赖的沙箱模式 API 测试、自动化的 bug 检查workflow，以及捕捉 AI 盲点的模式——同一个模型编写和审查代码时会产生的盲点
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # AI 回归测试

@@ -1,7 +1,7 @@
 ---
 name: swiftui-patterns
 description: SwiftUI 架构模式、使用 @Observable 的状态管理、视图组合、导航、性能优化，以及现代 iOS/macOS UI 最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # SwiftUI 模式

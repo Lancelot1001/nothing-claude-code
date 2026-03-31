@@ -1,7 +1,7 @@
 ---
 name: claude-devfleet
 description: 通过 Claude DevFleet 编排多agent编码任务 — 项目规划、在隔离的 worktree 中分配并行agent、监控进度以及读取结构化报告。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Claude DevFleet 多agent编排

@@ -1,7 +1,7 @@
 ---
 name: codebase-onboarding
 description: 分析不熟悉的代码库并生成结构化的入职指南，包括架构图、关键入口点、约定和起始 CLAUDE.md。当加入新项目或首次在仓库中设置 Claude Code 时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 代码库入职

@@ -1,7 +1,7 @@
 ---
 name: claude-api
 description: Anthropic Claude API 模式，适用于 Python 和 TypeScript。涵盖 Messages API、流式处理、工具使用、视觉、扩展思考、批量处理和提示缓存。以及 Claude Agent SDK。当使用 Claude API 或 Anthropic SDK 构建应用程序时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Claude API

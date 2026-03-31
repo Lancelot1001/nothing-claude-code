@@ -1,7 +1,7 @@
 ---
 name: agent-eval
 description: 对编码智能体（Claude Code、Aider、Codex等）在自定义任务上进行头对头比较，通过通过率、成本、时间和一致性指标进行评估
-origin: nothing-claude-code
+origin: something-claude-code
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 

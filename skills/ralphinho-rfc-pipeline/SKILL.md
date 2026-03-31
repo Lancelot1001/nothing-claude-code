@@ -1,7 +1,7 @@
 ---
 name: ralphinho-rfc-pipeline
 description: RFC 驱动的多agent DAG 执行模式，带质量门控、合并队列和工作单元编排。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Ralphinho RFC 管道

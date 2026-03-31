@@ -1,7 +1,7 @@
 ---
 name: search-first
 description: 先研究后编码的workflow process。在编写自定义代码之前，先搜索现有工具、库和模式。调用研究agent。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # /search-first — 先研究再编码

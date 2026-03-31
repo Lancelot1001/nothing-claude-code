@@ -1,7 +1,7 @@
 ---
 name: springboot-verification
 description: "Spring Boot 项目的验证循环：构建、静态分析、带覆盖率的测试、安全扫描，以及发布或 PR 前的差异审查。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Spring Boot 验证循环

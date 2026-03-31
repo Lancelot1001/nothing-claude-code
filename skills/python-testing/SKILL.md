@@ -1,7 +1,7 @@
 ---
 name: python-testing
 description: Python 测试策略，使用 pytest、TDD 方法论、 fixtures、mocking、参数化和覆盖率要求。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Python 测试模式

@@ -1,7 +1,7 @@
 ---
 name: ai-first-engineering
 description: 针对 AI 智能体生成大量实现输出的团队的工程运营模式
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # AI 优先工程

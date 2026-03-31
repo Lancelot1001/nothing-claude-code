@@ -1,7 +1,7 @@
 ---
 name: project-guidelines-example
 description: "Example project-specific skill template based on a real production application."
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 项目指南skill（示例）

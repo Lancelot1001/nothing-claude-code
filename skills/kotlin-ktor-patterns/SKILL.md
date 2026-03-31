@@ -1,7 +1,7 @@
 ---
 name: kotlin-ktor-patterns
 description: Ktor 服务器模式，包括路由 DSL、插件、认证、Koin DI、kotlinx.serialization、WebSockets 和 testApplication 测试。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Ktor 服务器模式

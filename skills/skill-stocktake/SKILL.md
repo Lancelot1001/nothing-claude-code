@@ -1,6 +1,6 @@
 ---
 description: "在审计 Claude skill和命令的质量时使用。支持快速扫描（仅扫描已更改的skill）和完整盘点了模式，通过顺序子agent批量评估。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # skill-stocktake

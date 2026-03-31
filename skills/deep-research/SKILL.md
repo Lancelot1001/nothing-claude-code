@@ -1,7 +1,7 @@
 ---
 name: deep-research
 description: 使用 firecrawl 和 exa MCP 进行多源深度研究。搜索网络，综合发现，并提供带有来源归属的引用报告。当用户需要任何主题的带有证据和引用的深入研究时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 深度研究

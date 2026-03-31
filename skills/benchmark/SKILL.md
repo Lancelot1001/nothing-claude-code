@@ -1,7 +1,7 @@
 ---
 name: benchmark
 description: 使用此skill来测量性能基准线、在 PR 前后检测性能回归，以及比较技术栈替代方案。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 基准测试 — 性能基准与回归检测

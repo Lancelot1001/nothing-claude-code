@@ -1,7 +1,7 @@
 ---
 name: skill-comply
 description: 可视化skill、规则和agent定义是否被真正遵循 — 在 3 个提示严格级别自动生成场景、运行agent、对行为序列分类，并报告带有完整工具调用时间线的合规率。
-origin: nothing-claude-code
+origin: something-claude-code
 tools: Read, Bash
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: java-coding-standards
 description: "Spring Boot 服务的 Java 编码规范：命名、不可变性、Optional 使用、流、异常、泛型和项目结构。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Java 编码规范

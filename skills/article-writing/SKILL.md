@@ -1,7 +1,7 @@
 ---
 name: article-writing
 description: 以源自提供的示例或品牌指导的独特风格撰写文章、指南、博客文章、教程、通讯等长篇内容。当用户需要超过一段的精美书面内容时使用，尤其是当风格一致性、结构性和可信度重要时
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 文章写作

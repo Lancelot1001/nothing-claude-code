@@ -1,7 +1,7 @@
 ---
 name: x-api
 description: X/Twitter API 集成，用于发布推文、线程、读取时间线、搜索和分析。涵盖 OAuth 认证模式、速率限制和平台原生内容发布。当用户想要以编程方式与 X 交互时使用
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # X API

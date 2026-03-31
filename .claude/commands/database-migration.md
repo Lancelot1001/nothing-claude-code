@@ -1,12 +1,12 @@
 ---
 name: database-migration
-description: Workflow command scaffold for database-migration in nothing-claude-code.
+description: Workflow command scaffold for database-migration in something-claude-code.
 allowed_tools: ["Bash", "Read", "Write", "Grep", "Glob"]
 ---
 
 # /database-migration
 
-Use this workflow when working on **database-migration** in `nothing-claude-code`.
+Use this workflow when working on **database-migration** in `something-claude-code`.
 
 ## Goal
 

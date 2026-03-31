@@ -1,7 +1,7 @@
 ---
 name: data-scraper-agent
 description: 为任何公共来源（求职板、价格、新闻、GitHub、体育赛事等）构建全自动 AI 驱动的数据采集agent。按计划抓取，使用免费 LLM（Gemini Flash）丰富数据，存储到 Notion/Sheets/Supabase，并从用户反馈中学习。100% 免费运行在 GitHub Actions 上。当用户想要自动监控、收集或跟踪任何公共数据时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 数据采集agent

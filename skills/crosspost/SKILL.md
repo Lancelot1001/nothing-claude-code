@@ -1,7 +1,7 @@
 ---
 name: crosspost
 description: 跨 X、LinkedIn、Threads 和 Bluesky 的多平台内容分发。使用 content-engine 模式为每个平台适配内容。绝不跨平台发布相同内容。当用户想要在社交平台上分发内容时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 跨平台发布

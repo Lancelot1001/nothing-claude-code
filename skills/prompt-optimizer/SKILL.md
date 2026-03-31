@@ -10,7 +10,7 @@ description: >-
   不要触发。当用户说"优化代码"、"优化性能"、"optimize performance"、
   "optimize this code"时也不要触发——这些是重构/性能任务，
   不是提示词优化。
-origin: nothing-claude-code
+origin: something-claude-code
 metadata:
   author: YannJY02
   version: "1.0.0"

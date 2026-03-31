@@ -1,7 +1,7 @@
 ---
 name: cpp-testing
 description: 仅在编写/更新/修复 C++ 测试、配置 GoogleTest/CTest、诊断失败或flaky 测试、或添加覆盖率/ sanitizer 时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # C++ 测试（agentskill）

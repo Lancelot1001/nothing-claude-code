@@ -1,7 +1,7 @@
 ---
 name: browser-qa
 description: 使用此skill在部署功能后使用浏览器自动化进行可视化测试和 UI 交互验证。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 浏览器 QA — 自动化可视化测试与交互

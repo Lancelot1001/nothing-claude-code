@@ -1,7 +1,7 @@
 ---
 name: kotlin-exposed-patterns
 description: JetBrains Exposed ORM 模式，包括 DSL 查询、DAO 模式、事务、HikariCP 连接池、Flyway 迁移和仓储模式。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Kotlin Exposed 模式

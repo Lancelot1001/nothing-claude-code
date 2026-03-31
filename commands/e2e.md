@@ -334,7 +334,7 @@ open artifacts/search-results.png
 
 ## 相关agent
 
-此命令调用 nothing-claude-code 提供的 `e2e-runner` agent。
+此命令调用 something-claude-code 提供的 `e2e-runner` agent。
 
 对于手动安装，源文件位于：
 `agents/e2e-runner.md`

@@ -1,7 +1,7 @@
 ---
 name: kotlin-testing
 description: 使用 Kotest、MockK、协程测试、属性测试和 Kover 覆盖率的 Kotlin 测试模式。遵循 TDD 方法论和惯用 Kotlin 实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Kotlin 测试模式

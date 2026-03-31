@@ -1,7 +1,7 @@
 ---
 name: agent-harness-construction
 description: 设计和优化 AI 智能体的动作空间、工具定义和观察格式，以提高完成率
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 智能体工具链构建

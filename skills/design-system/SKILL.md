@@ -1,7 +1,7 @@
 ---
 name: design-system
 description: 使用此skill生成或审计设计系统、检查视觉一致性，以及审查涉及样式的 PR。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 设计系统 — 生成和审计视觉系统

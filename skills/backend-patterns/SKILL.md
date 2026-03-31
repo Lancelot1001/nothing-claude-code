@@ -1,7 +1,7 @@
 ---
 name: backend-patterns
 description: 后端架构模式、API 设计、数据库优化以及 Node.js、Express 和 Next.js API 路由的服务端最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 后端开发模式

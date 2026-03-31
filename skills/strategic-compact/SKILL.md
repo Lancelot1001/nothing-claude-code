@@ -1,7 +1,7 @@
 ---
 name: strategic-compact
 description: 建议在逻辑间隔进行手动上下文压缩，以在任务阶段之间保持上下文，而非依赖任意的自动压缩。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 战略压缩skill

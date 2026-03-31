@@ -1,7 +1,7 @@
 ---
 name: canary-watch
 description: 使用此skill在部署、合并或依赖升级后监控已部署 URL 的回归情况。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 金丝雀监控 — 部署后监控

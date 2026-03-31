@@ -1,7 +1,7 @@
 ---
 name: product-lens
 description: Use this skill to validate the "why" before building, run product diagnostics, and convert vague ideas into specs.
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 产品镜头——构建前先思考

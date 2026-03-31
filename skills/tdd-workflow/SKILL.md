@@ -1,7 +1,7 @@
 ---
 name: tdd-workflow
 description: 在编写新功能、修复错误或重构代码时使用此skill。强制执行测试驱动开发，覆盖率 80%+，包括单元、集成和 E2E 测试。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 测试驱动开发workflow

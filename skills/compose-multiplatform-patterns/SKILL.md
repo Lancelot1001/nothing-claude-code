@@ -1,7 +1,7 @@
 ---
 name: compose-multiplatform-patterns
 description: Compose Multiplatform 和 Jetpack Compose 模式，适用于 KMP 项目——状态管理、导航、主题化、性能优化和平台特定 UI。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Compose Multiplatform 模式

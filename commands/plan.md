@@ -109,7 +109,7 @@ agent (planner):
 
 ## 相关agent
 
-此命令调用 nothing-claude-code 提供的 `planner` agent。
+此命令调用 something-claude-code 提供的 `planner` agent。
 
 手动安装时，源文件位于：
 `agents/planner.md`

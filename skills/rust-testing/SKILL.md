@@ -1,7 +1,7 @@
 ---
 name: rust-testing
 description: Rust 测试模式，包括单元测试、集成测试、异步测试、属性测试、mocking 和覆盖率。遵循 TDD 方法论。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Rust 测试模式

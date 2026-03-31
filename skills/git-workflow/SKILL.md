@@ -1,7 +1,7 @@
 ---
 name: git-workflow
 description: Git workflow模式，包括分支策略、提交约定、merge 与 rebase 的对比、冲突解决和团队协作开发最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Git workflow模式

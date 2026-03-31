@@ -1,7 +1,7 @@
 ---
 name: laravel-verification
 description: "Laravel 项目验证循环：环境检查、linting、静态分析、带覆盖率的测试、安全扫描和部署就绪检查。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Laravel 验证循环

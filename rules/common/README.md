@@ -8,7 +8,7 @@
 
 ```bash
 mkdir -p ~/.claude/rules
-cp -r nothing-claude-code/rules/common ~/.claude/rules/
+cp -r something-claude-code/rules/common ~/.claude/rules/
 ```
 
 ## 规则文件

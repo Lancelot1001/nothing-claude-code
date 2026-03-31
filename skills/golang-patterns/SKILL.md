@@ -1,7 +1,7 @@
 ---
 name: golang-patterns
 description: 用于构建健壮、高效和可维护 Go 应用程序的习惯性 Go 模式、最佳实践和约定。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Go 开发模式

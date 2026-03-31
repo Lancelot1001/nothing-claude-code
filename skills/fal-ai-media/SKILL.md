@@ -1,7 +1,7 @@
 ---
 name: fal-ai-media
 description: 通过 fal.ai MCP 进行统一媒体生成——图像、视频和音频。涵盖文生图（Nano Banana）、图文生视频（Seedance、Kling、Veo 3）、文生语音（CSM-1B）以及视频生音频（ThinkSound）。当用户想要生成图像、视频或音频时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # fal.ai 媒体生成

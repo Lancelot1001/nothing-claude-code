@@ -1,7 +1,7 @@
 ---
 name: continuous-learning
 description: 自动从 Claude Code 会话中提取可复用模式，并将其保存为已学skill供将来使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 持续学习skill

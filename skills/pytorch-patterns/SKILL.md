@@ -1,7 +1,7 @@
 ---
 name: pytorch-patterns
 description: PyTorch 深度学习模式以及构建健壮、高效和可重复的训练流程、模型架构和数据加载的最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # PyTorch 开发模式

@@ -1,7 +1,7 @@
 ---
 name: clickhouse-io
 description: ClickHouse 数据库模式、查询优化、分析和高性能分析工作负载的数据工程最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # ClickHouse 分析模式

@@ -1,7 +1,7 @@
 ---
 name: architecture-decision-records
 description: 将 Claude Code 会话期间做出的架构决策捕获为结构化的 ADR。自动检测决策时刻，记录上下文、考虑的替代方案和理由。维护 ADR 日志，以便未来的开发者理解代码库为何如此构建
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 架构决策记录

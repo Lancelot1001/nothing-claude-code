@@ -1,7 +1,7 @@
 ---
 name: ck
 description: Claude Code 的持久化项目记忆。自动在会话开始时加载项目上下文，使用 git 活动跟踪会话，并写入原生记忆。命令运行确定性的 Node.js 脚本 — 行为在模型版本间保持一致。
-origin: nothing-claude-code
+origin: something-claude-code
 version: 2.0.0
 author: sreedhargs89
 repo: https://github.com/sreedhargs89/context-keeper

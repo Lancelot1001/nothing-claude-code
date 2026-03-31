@@ -1,7 +1,7 @@
 ---
 name: investor-materials
 description: 创建和更新推介文稿、单页资料、投资者备忘录、加速器申请、财务模型和融资材料。当用户需要面向投资者的文档、预测、资金使用表、里程碑计划或需要在多个融资资产中保持内部一致性的材料时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 投资者材料

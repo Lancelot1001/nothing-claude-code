@@ -1,5 +1,5 @@
 ---
-description: 启动 NanoClaw v2 — nothing-claude-code 的持久化、无依赖 REPL，支持模型路由、skill热加载、分支、压缩、导出和指标。
+description: 启动 NanoClaw v2 — something-claude-code 的持久化、无依赖 REPL，支持模型路由、skill热加载、分支、压缩、导出和指标。
 ---
 
 # Claw 命令

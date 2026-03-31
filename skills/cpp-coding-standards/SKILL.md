@@ -1,7 +1,7 @@
 ---
 name: cpp-coding-standards
 description: 基于 C++ 核心指南（isocpp.github.io）的 C++ 编码标准。用于编写、审查或重构 C++ 代码以执行现代、安全和惯用的实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # C++ 编码标准（C++ 核心指南）

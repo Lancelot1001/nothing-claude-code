@@ -1,7 +1,7 @@
 ---
 name: enterprise-agent-ops
 description: 通过可观测性、安全边界和生命周期管理来操作长期运行的agent工作负载。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 企业agent运维

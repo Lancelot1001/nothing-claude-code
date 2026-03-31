@@ -1,7 +1,7 @@
 ---
 name: database-migrations
 description: 数据库迁移最佳实践，涵盖 PostgreSQL、MySQL 和常见 ORM（Prisma、Drizzle、Kysely、Django、TypeORM、golang-migrate）的架构变更、数据迁移、回滚和零停机部署。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 数据库迁移模式

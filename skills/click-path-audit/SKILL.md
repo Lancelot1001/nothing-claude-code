@@ -1,7 +1,7 @@
 ---
 name: click-path-audit
 description: "追踪每个面向用户的按钮/触点及其完整的状态变化序列，以发现以下 bug：函数单独工作但相互取消、产生错误的最终状态或使 UI 处于不一致状态。使用时机：系统性调试未发现 bug 但用户报告按钮坏了，或者在任何涉及共享状态存储的重大重构之后。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # /click-path-audit — 行为流审计

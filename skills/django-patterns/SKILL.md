@@ -1,7 +1,7 @@
 ---
 name: django-patterns
 description: Django 架构模式、DRF REST API 设计、ORM 最佳实践、缓存、信号、中间件以及生产级 Django 应用程序。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Django 开发模式

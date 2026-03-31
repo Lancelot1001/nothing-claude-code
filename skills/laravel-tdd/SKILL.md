@@ -1,7 +1,7 @@
 ---
 name: laravel-tdd
 description: 使用 PHPUnit 和 Pest、Pest factories、数据库测试、fakes 和覆盖率目标的 Laravel 测试驱动开发。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Laravel TDD workflow

@@ -5,7 +5,7 @@
 ## 项目结构
 
 ```
-nothing-claude-code/
+something-claude-code/
 ├── README.md              # 项目介绍
 ├── CLAUDE.md              # 本文件 - 项目指引
 ├── 快速参考.md            # 命令速查表

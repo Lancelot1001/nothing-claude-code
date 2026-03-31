@@ -1,7 +1,7 @@
 ---
 name: django-security
 description: Django 安全最佳实践、身份验证、授权、CSRF 保护、SQL 注入预防、XSS 预防以及安全部署配置。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Django 安全最佳实践

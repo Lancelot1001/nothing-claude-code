@@ -1,7 +1,7 @@
 ---
 name: security-review
 description: 在添加身份验证、处理用户输入、使用密钥、创建 API 端点或实现支付/敏感功能时使用此skill。提供全面的安全检查清单和模式。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 安全审查skill

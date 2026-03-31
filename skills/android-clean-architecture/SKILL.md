@@ -1,7 +1,7 @@
 ---
 name: android-clean-architecture
 description: Android 和 Kotlin 多平台项目的整洁架构模式——模块结构、依赖规则、UseCase、Repository 和数据层模式
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Android 整洁架构

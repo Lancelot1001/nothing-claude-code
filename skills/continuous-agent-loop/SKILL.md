@@ -1,7 +1,7 @@
 ---
 name: continuous-agent-loop
 description: 带质量门、评估和恢复控制的连续自主agent循环模式。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 连续agent循环

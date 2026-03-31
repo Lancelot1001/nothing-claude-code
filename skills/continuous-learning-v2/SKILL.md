@@ -1,7 +1,7 @@
 ---
 name: continuous-learning-v2
 description: 基于本能的学习系统，通过 hooks 观察会话，创建带置信度评分的原子本能，并将其演化为skill/命令/agent。v2.1 添加了项目范围的本能以防止跨项目污染。
-origin: nothing-claude-code
+origin: something-claude-code
 version: 2.1.0
 ---
 

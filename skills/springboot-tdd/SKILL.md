@@ -1,7 +1,7 @@
 ---
 name: springboot-tdd
 description: 使用 JUnit 5、Mockito、MockMvc、Testcontainers 和 JaCoCo 进行 Spring Boot 测试驱动开发。在添加功能、修复错误或重构时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Spring Boot TDD workflow

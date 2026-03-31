@@ -1,7 +1,7 @@
 ---
 name: frontend-slides
 description: 从头创建精美、动画丰富的 HTML 演示文稿，或通过转换 PowerPoint 文件。用于用户需要构建演示文稿、将 PPT/PPTX 转换为网页，或为演讲/推介创建幻灯片。帮助非设计师通过视觉探索而非抽象选择来发现自己的审美风格。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 前端幻灯片

@@ -1,7 +1,7 @@
 ---
 name: swift-concurrency-6-2
 description: Swift 6.2 亲和并发 — 默认单线程，`@concurrent` 用于显式后台卸载，主 actor 类型的隔离符合协议。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Swift 6.2 亲和并发

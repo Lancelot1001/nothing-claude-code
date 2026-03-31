@@ -1,5 +1,5 @@
 ---
-description: 分析草稿提示并输出优化后的、nothing-claude-code 增强的版本，可直接粘贴运行。不执行任务——仅输出咨询分析。
+description: 分析草稿提示并输出优化后的、something-claude-code 增强的版本，可直接粘贴运行。不执行任务——仅输出咨询分析。
 ---
 
 # /prompt-optimize

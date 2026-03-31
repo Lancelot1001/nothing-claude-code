@@ -143,9 +143,9 @@ describe('calculateLiquidityScore', () => {
 
 ## 相关agent
 
-此命令调用 nothing-claude-code 提供的 `tdd-guide` agent。
+此命令调用 something-claude-code 提供的 `tdd-guide` agent。
 
-相关 `tdd-workflow` skill也随 nothing-claude-code 打包。
+相关 `tdd-workflow` skill也随 something-claude-code 打包。
 
 手动安装时，源文件位于：
 - `agents/tdd-guide.md`

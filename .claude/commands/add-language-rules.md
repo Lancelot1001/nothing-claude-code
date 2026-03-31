@@ -1,12 +1,12 @@
 ---
 name: add-language-rules
-description: Workflow command scaffold for add-language-rules in nothing-claude-code.
+description: Workflow command scaffold for add-language-rules in something-claude-code.
 allowed_tools: ["Bash", "Read", "Write", "Grep", "Glob"]
 ---
 
 # /add-language-rules
 
-Use this workflow when working on **add-language-rules** in `nothing-claude-code`.
+Use this workflow when working on **add-language-rules** in `something-claude-code`.
 
 ## Goal
 

@@ -1,7 +1,7 @@
 ---
 name: context-budget
 description: 审计 Claude Code 在agent、skill、MCP 服务器和规则中的上下文窗口消耗。识别膨胀、冗余组件，并生成优先化的 token 节省建议。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 上下文预算

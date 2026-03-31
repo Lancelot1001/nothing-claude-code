@@ -1,7 +1,7 @@
 ---
 name: python-patterns
 description: Python 惯用写法、PEP 8 标准、类型提示以及构建健壮、高效和可维护 Python 应用程序的最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Python 开发模式

@@ -1,7 +1,7 @@
 ---
 name: springboot-patterns
 description: Spring Boot 架构模式、REST API 设计、分层服务、数据访问、缓存、异步处理和日志。用于 Java Spring Boot 后端工作。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Spring Boot 开发模式

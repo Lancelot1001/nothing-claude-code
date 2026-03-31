@@ -6,7 +6,7 @@ description: >-
   并行步骤检测、反模式目录和计划变更协议。
   触发时机：用户请求复杂多 PR 任务或需要多个会话的工作的计划、蓝图或路线图时。
   不触发时机：任务可以在单个 PR 内完成或需要少于 3 次工具调用，或者用户说「直接做」。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 蓝图 — 构建计划生成器

@@ -1,7 +1,7 @@
 ---
 name: cost-aware-llm-pipeline
 description: LLM API 使用成本优化模式——按任务复杂度进行模型路由、预算跟踪、重试逻辑和提示缓存。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 成本感知 LLM 管道

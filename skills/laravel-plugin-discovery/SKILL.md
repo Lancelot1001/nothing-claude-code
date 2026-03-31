@@ -1,7 +1,7 @@
 ---
 name: laravel-plugin-discovery
 description: 通过 LaraPlugins.io MCP 发现和评估 Laravel 包。在用户想要查找插件、检查包健康状况或评估 Laravel/PHP 兼容性时使用。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Laravel 插件发现

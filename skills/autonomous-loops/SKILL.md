@@ -1,7 +1,7 @@
 ---
 name: autonomous-loops
 description: "自主 Claude Code 循环的模式和架构——从简单的顺序管道到 RFC 驱动的多智能体 DAG 系统"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 自主循环skill

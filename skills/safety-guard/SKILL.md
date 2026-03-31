@@ -1,7 +1,7 @@
 ---
 name: safety-guard
 description: 在生产系统上工作或自主运行agent时，使用此skill防止破坏性操作。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Safety Guard — 防止破坏性操作

@@ -1,7 +1,7 @@
 ---
 name: golang-testing
 description: Go 测试模式，包括表驱动测试、子测试、基准测试、模糊测试和测试覆盖率。遵循 TDD 方法论和习惯性 Go 实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Go 测试模式

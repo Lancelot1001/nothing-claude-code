@@ -1,7 +1,7 @@
 ---
 name: team-builder
 description: 用于组合和调度并行团队的交互式agent选择器
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 团队构建器

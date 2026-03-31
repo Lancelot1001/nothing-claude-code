@@ -1,7 +1,7 @@
 ---
 name: django-tdd
 description: Django 测试策略，包含 pytest-django、TDD 方法论、factory_boy、mocking、覆盖率以及 Django REST Framework API 测试。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Django TDD 测试

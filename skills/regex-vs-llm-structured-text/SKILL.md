@@ -1,7 +1,7 @@
 ---
 name: regex-vs-llm-structured-text
 description: 在解析结构化文本时选择正则表达式和 LLM 的决策框架——从正则表达式开始，仅在低置信度边缘情况下添加 LLM。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 正则表达式 vs LLM 用于结构化文本解析

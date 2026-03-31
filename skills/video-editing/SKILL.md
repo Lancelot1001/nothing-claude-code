@@ -1,7 +1,7 @@
 ---
 name: video-editing
 description: 用于剪辑、构建和增强真实素材的 AI 辅助视频编辑workflow。涵盖从原始捕获到 FFmpeg、Remotion、ElevenLabs、fal.ai，再到 Descript 或 CapCut 最终精修的完整管道。当用户想要编辑视频、剪辑素材、创建视频博客或构建视频内容时使用
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 视频编辑

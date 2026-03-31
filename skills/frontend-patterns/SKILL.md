@@ -1,7 +1,7 @@
 ---
 name: frontend-patterns
 description: React、Next.js 的前端开发模式，状态管理、性能优化和 UI 最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 前端开发模式

@@ -1,7 +1,7 @@
 ---
 name: iterative-retrieval
 description: 通过渐进式优化上下文检索来解决子agent上下文问题的模式
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 迭代检索模式

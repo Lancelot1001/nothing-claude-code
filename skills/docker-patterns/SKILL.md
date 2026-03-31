@@ -1,7 +1,7 @@
 ---
 name: docker-patterns
 description: Docker 和 Docker Compose 模式，用于本地开发、容器安全、网络、卷策略和多服务编排。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Docker 模式

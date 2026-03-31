@@ -1,7 +1,7 @@
 ---
 name: swift-protocol-di-testing
 description: 基于协议的依赖注入以实现可测试的 Swift 代码 — 使用专注协议和 Swift Testing 模拟文件系统、网络和外部 API。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Swift 基于协议的依赖注入以实现测试

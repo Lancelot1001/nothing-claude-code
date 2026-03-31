@@ -1,7 +1,7 @@
 ---
 name: springboot-security
 description: Java Spring Boot 服务的身份验证/授权、验证、CSRF、密钥、安全头、速率限制和依赖项安全最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Spring Boot 安全审查

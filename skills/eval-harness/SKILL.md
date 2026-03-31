@@ -1,7 +1,7 @@
 ---
 name: eval-harness
 description: 用于 Claude Code 会话的形式化评估框架，实现评估驱动开发（EDD）原则
-origin: nothing-claude-code
+origin: something-claude-code
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: django-verification
 description: "Django 项目验证循环：在发布或 PR 之前进行迁移检查、linting、覆盖率测试、安全扫描和部署就绪检查。"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Django 验证循环

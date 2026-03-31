@@ -1,7 +1,7 @@
 ---
 name: agentic-engineering
 description: 使用评估优先执行、任务分解和成本感知模型路由，以智能体工程师的方式运作
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 智能体工程

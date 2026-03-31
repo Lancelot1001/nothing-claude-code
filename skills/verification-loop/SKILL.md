@@ -1,7 +1,7 @@
 ---
 name: verification-loop
 description: "Claude Code 会话的综合验证系统"
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # 验证循环skill

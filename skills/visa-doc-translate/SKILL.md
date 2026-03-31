@@ -1,7 +1,7 @@
 ---
 name: visa-doc-translate
 description: 将签证申请文件（图像）翻译成英文，并创建包含原文和译文的双语 PDF
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 你正在帮助翻译签证申请的文档。

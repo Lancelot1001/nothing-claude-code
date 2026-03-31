@@ -1,4 +1,4 @@
-# nothing-claude-code — Claude Code 中文配置指南
+# something-claude-code — Claude Code 中文配置指南
 
 基于 [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) 的中文本地化配置，为中文开发者提供完整的 Claude Code 操作指南。
 
@@ -62,7 +62,7 @@ claude
 ## 项目结构
 
 ```
-nothing-claude-code/
+something-claude-code/
 ├── README.md              # 本文件 - 项目介绍
 ├── CLAUDE.md              # 项目指引
 ├── 快速参考.md            # 命令速查表

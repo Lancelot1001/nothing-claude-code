@@ -1,7 +1,7 @@
 ---
 name: swift-actor-persistence
 description: 使用 actors 实现 Swift 中的线程安全数据持久化 — 带文件支持的内存缓存，通过设计消除数据竞争。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Swift Actors 实现线程安全持久化

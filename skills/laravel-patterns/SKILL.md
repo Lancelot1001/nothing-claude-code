@@ -1,7 +1,7 @@
 ---
 name: laravel-patterns
 description: Laravel 架构模式、路由/控制器、Eloquent ORM、服务层、队列、事件、缓存和生产级 API 资源。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Laravel 开发模式

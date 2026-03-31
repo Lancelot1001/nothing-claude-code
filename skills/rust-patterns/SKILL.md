@@ -1,7 +1,7 @@
 ---
 name: rust-patterns
 description: Rust 惯用模式、所有权、错误处理、trait、并发以及构建安全、高性能应用程序的最佳实践。
-origin: nothing-claude-code
+origin: something-claude-code
 ---
 
 # Rust 开发模式
