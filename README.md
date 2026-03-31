@@ -32,23 +32,32 @@ brew install claude-code
 # https://docs.claude.com
 ```
 
-### 第二步：复制配置文件
+### 第二步：安装配置（推荐方式）
 
 ```bash
-# 创建配置目录
-mkdir -p ~/.claude/rules/common
-mkdir -p ~/.claude/agents
-mkdir -p ~/.claude/commands
+# 一键安装核心配置（推荐）
+./scripts/install-core.sh
 
-# 复制规则（必须）
+# 或手动复制
+mkdir -p ~/.claude/rules/common ~/.claude/agents ~/.claude/commands
 cp -r rules/common/*.md ~/.claude/rules/common/
-
-# 复制 agents（推荐）
 cp agents/*.md ~/.claude/agents/
-
-# 复制 commands（推荐）
 cp commands/*.md ~/.claude/commands/
 ```
+
+**按需安装语言规则**：
+```bash
+# Python 项目
+cp rules/python/*.md ~/.claude/rules/python/
+
+# Go 项目
+cp rules/golang/*.md ~/.claude/rules/golang/
+
+# TypeScript 项目
+cp rules/typescript/*.md ~/.claude/rules/typescript/
+```
+
+详细索引见 [配置索引](./配置索引.md)。
 
 ### 第三步：开始对话
 
@@ -64,55 +73,23 @@ claude
 ```
 something-claude-code/
 ├── README.md              # 本文件 - 项目介绍
-├── CLAUDE.md              # 项目指引
+├── CLAUDE.md              # Claude Code 项目指引
 ├── 快速参考.md            # 命令速查表
 ├── 核心原则.md            # 核心开发理念
+├── 配置索引.md            # 配置分类索引
+├── 缺失检查报告.md        # 与 ECC 差异分析
+├── scripts/               # 安装脚本
+│   └── install-core.sh   # 核心配置一键安装
 ├── rules/                 # 规则集
-│   ├── common/            # 通用规则
-│   │   ├── coding-style.md
-│   │   ├── security.md
-│   │   ├── testing.md
-│   │   ├── git-workflow.md
-│   │   ├── hooks.md
-│   │   ├── agents.md
-│   │   └── performance.md
-│   ├── golang/            # Go 规则
-│   ├── cpp/               # C++ 规则
-│   ├── csharp/            # C# 规则
-│   ├── java/              # Java 规则
-│   ├── kotlin/            # Kotlin 规则
-│   ├── perl/              # Perl 规则
-│   ├── php/               # PHP 规则
-│   ├── python/            # Python 规则
-│   ├── rust/              # Rust 规则
-│   ├── swift/            # Swift 规则
-│   └── typescript/         # TypeScript/JavaScript 规则
-├── .claude/               # Claude Code 配置
-│   └── commands/           # 工作流命令
-│       ├── add-language-rules.md
-│       ├── database-migration.md
-│       └── feature-development.md
-├── .kiro/                  # Kiro 模板
-│   └── steering/           # Steering 模板
-│       ├── coding-style.md
-│       ├── dev-mode.md
-│       ├── development-workflow.md
-│       ├── git-workflow.md
-│       ├── golang-patterns.md
-│       ├── lessons-learned.md
-│       ├── patterns.md
-│       ├── performance.md
-│       ├── python-patterns.md
-│       ├── research-mode.md
-│       ├── review-mode.md
-│       ├── security.md
-│       ├── swift-patterns.md
-│       ├── testing.md
-│       ├── typescript-patterns.md
-│       └── typescript-security.md
-├── agents/                # Agent 定义
-├── commands/              # 斜杠命令
-└── skills/               # Skill 定义
+│   ├── common/            # 通用规则（7个必装 + 4个可选）
+│   └── <lang>/           # 11种语言规则（每种5个）
+├── .claude/               # Claude Code 官方工作流命令
+│   └── commands/
+├── .kiro/                 # Kiro 引擎模板（Steering 模板）
+│   └── steering/          # 16个场景模板
+├── agents/                # 30个专业 Agent
+├── commands/              # 70+ 斜杠命令
+└── skills/               # 136+ Skills
 ```
 
 ---
@@ -382,8 +359,15 @@ claude
 
 ## 项目统计
 
-- **11** 种语言规则（C++、C#、Go、Java、Kotlin、Perl、PHP、Python、Rust、Swift、TypeScript）
-- **16** 个 Steering 模板
-- **3** 个工作流命令
-- **6** 个通用规则
+| 类别 | 数量 |
+|------|------|
+| 语言规则 | 11 种 × 5 = **55** |
+| 通用规则 | **7** 必装 / 11 总计 |
+| Agents | **30** |
+| Commands | **70+** |
+| Steering 模板 | **16** |
+| Skills | **136+** |
+| 安装脚本 | **1** |
+
+详细索引见 [配置索引](./配置索引.md)，差异分析见 [缺失检查报告](./缺失检查报告.md)。
 
