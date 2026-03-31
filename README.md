@@ -66,30 +66,53 @@ nothing-claude-code/
 ├── README.md              # 本文件 - 项目介绍
 ├── CLAUDE.md              # 项目指引
 ├── 快速参考.md            # 命令速查表
+├── 核心原则.md            # 核心开发理念
 ├── rules/                 # 规则集
-│   └── common/            # 通用规则
+│   ├── common/            # 通用规则
+│   │   ├── coding-style.md
+│   │   ├── security.md
+│   │   ├── testing.md
+│   │   ├── git-workflow.md
+│   │   ├── hooks.md
+│   │   ├── agents.md
+│   │   └── performance.md
+│   ├── golang/            # Go 规则
+│   ├── cpp/               # C++ 规则
+│   ├── csharp/            # C# 规则
+│   ├── java/              # Java 规则
+│   ├── kotlin/            # Kotlin 规则
+│   ├── perl/              # Perl 规则
+│   ├── php/               # PHP 规则
+│   ├── python/            # Python 规则
+│   ├── rust/              # Rust 规则
+│   ├── swift/            # Swift 规则
+│   └── typescript/         # TypeScript/JavaScript 规则
+├── .claude/               # Claude Code 配置
+│   └── commands/           # 工作流命令
+│       ├── add-language-rules.md
+│       ├── database-migration.md
+│       └── feature-development.md
+├── .kiro/                  # Kiro 模板
+│   └── steering/           # Steering 模板
 │       ├── coding-style.md
-│       ├── security.md
-│       ├── testing.md
+│       ├── dev-mode.md
+│       ├── development-workflow.md
 │       ├── git-workflow.md
-│       ├── hooks.md
-│       ├── agents.md
-│       └── performance.md
-├── agents/                # 30+ agent 定义
-│   ├── planner.md         # 规划 agent
-│   ├── code-reviewer.md   # 代码审查 agent
-│   ├── security-reviewer.md
-│   └── ...                # 更多 specialized agents
+│       ├── golang-patterns.md
+│       ├── lessons-learned.md
+│       ├── patterns.md
+│       ├── performance.md
+│       ├── python-patterns.md
+│       ├── research-mode.md
+│       ├── review-mode.md
+│       ├── security.md
+│       ├── swift-patterns.md
+│       ├── testing.md
+│       ├── typescript-patterns.md
+│       └── typescript-security.md
+├── agents/                # Agent 定义
 ├── commands/              # 斜杠命令
-│   ├── plan.md
-│   ├── tdd.md
-│   ├── code-review.md
-│   └── ...
-└── skills/                # 136+ skill 定义
-    ├── docker-patterns/
-    ├── postgres-patterns/
-    ├── tdd-workflow/
-    └── ...
+└── skills/               # Skill 定义
 ```
 
 ---
@@ -124,7 +147,7 @@ agents 是专业化的 AI 助手，专门处理特定任务：
 
 skills 是特定领域的知识和 workflow 定义，涵盖：
 
-- **编程语言**：Python、Java、Go、Rust、Perl、Swift/Kotlin
+- **编程语言**：Python、Java、Go、Rust、Perl、Swift/Kotlin、C++、C#、PHP、TypeScript
 - **框架**：Django、Spring Boot、Laravel、Next.js
 - **工具**：Docker、PostgreSQL、ClickHouse
 - **方法论**：TDD、安全审查、代码质量
@@ -133,11 +156,30 @@ skills 是特定领域的知识和 workflow 定义，涵盖：
 
 规则是给 Claude 的永久指令，告诉它如何工作：
 
-- `coding-style.md` — 不可变性、文件组织、命名规范
-- `security.md` — 输入验证、秘密管理、CSRF/XSS防护
-- `testing.md` — TDD、覆盖率要求、测试类型
-- `git-workflow.md` — 提交格式、分支策略
-- `hooks.md` — Hook 配置格式
+- `rules/common/` — 通用规则（所有语言都适用）
+  - `coding-style.md` — 不可变性、文件组织、命名规范
+  - `security.md` — 输入验证、秘密管理、CSRF/XSS防护
+  - `testing.md` — TDD、覆盖率要求、测试类型
+  - `git-workflow.md` — 提交格式、分支策略
+  - `hooks.md` — Hook 配置格式
+  - `performance.md` — 模型选择、Context 管理
+  - `patterns.md` — 设计模式、skeleton projects
+  - `agents.md` — 何时委托给 subagents
+- `rules/<lang>/` — 语言特定规则（按需安装）
+  - `coding-style.md` — 该语言的编码风格
+  - `hooks.md` — 该语言的工具链 Hooks
+  - `patterns.md` — 该语言的惯用模式
+  - `security.md` — 该语言的安全实践
+  - `testing.md` — 该语言的测试框架
+
+### Steering 模板
+
+`.kiro/steering/` 目录包含 Kiro 引擎使用的模板文件：
+
+- **核心模板**：`coding-style`、`security`、`testing`、`patterns`、`performance`
+- **模式模板**：`development-workflow`、`git-workflow`
+- **上下文模板**：`dev-mode`、`research-mode`、`review-mode`、`lessons-learned`
+- **语言模板**：`golang-patterns`、`python-patterns`、`swift-patterns`、`typescript-patterns`、`typescript-security`
 
 ---
 
@@ -301,6 +343,9 @@ const updatedUser = { ...user, name: '新名字' };
 | model | AI 模型 |
 | API | 应用程序接口 |
 | CLI | 命令行工具 |
+| TDD | 测试驱动开发 |
+| Repository | 仓储模式 |
+| DI | 依赖注入 |
 
 ---
 
@@ -332,14 +377,13 @@ claude
 
 - [Claude Code 官方文档](https://docs.claude.com)
 - [ECC 原版英文文档](https://github.com/affaan-m/everything-claude-code)
-- [ECC 精简指南](https://x.com/affaanmustafa/status/2012378465664745795)
 
 ---
 
 ## 项目统计
 
-- **136** skills
-- **30** agents
-- **60** 斜杠命令
-- **6** 核心规则
+- **11** 种语言规则（C++、C#、Go、Java、Kotlin、Perl、PHP、Python、Rust、Swift、TypeScript）
+- **16** 个 Steering 模板
+- **3** 个工作流命令
+- **6** 个通用规则
 

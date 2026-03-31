@@ -1,58 +1,58 @@
-# Example Project CLAUDE.md
+# 示例项目 CLAUDE.md
 
-This is an example project-level CLAUDE.md file. Place this in your project root.
+这是一个示例项目级 CLAUDE.md 文件。放置在项目根目录。
 
-## Project Overview
+## 项目概述
 
-[Brief description of your project - what it does, tech stack]
+[简要描述你的项目——它做什么，技术栈]
 
-## Critical Rules
+## 关键规则
 
-### 1. Code Organization
+### 1. 代码组织
 
-- Many small files over few large files
-- High cohesion, low coupling
-- 200-400 lines typical, 800 max per file
-- Organize by feature/domain, not by type
+- 多小文件优于少大文件
+- 高内聚，低耦合
+- 典型 200-400 行，最多每文件 800 行
+- 按功能/领域组织，而非按类型
 
-### 2. Code Style
+### 2. 代码风格
 
-- No emojis in code, comments, or documentation
-- Immutability always - never mutate objects or arrays
-- No console.log in production code
-- Proper error handling with try/catch
-- Input validation with Zod or similar
+- 代码、注释或文档中不用 emoji
+- 始终不可变性——绝不修改对象或数组
+- 生产代码中无 console.log
+- 适当的错误处理（try/catch）
+- 使用 Zod 或类似工具进行输入验证
 
-### 3. Testing
+### 3. 测试
 
-- TDD: Write tests first
-- 80% minimum coverage
-- Unit tests for utilities
-- Integration tests for APIs
-- E2E tests for critical flows
+- TDD：先写测试
+- 最低 80% 覆盖率
+- 工具函数的单元测试
+- API 的集成测试
+- 关键流程的 E2E 测试
 
-### 4. Security
+### 4. 安全
 
-- No hardcoded secrets
-- Environment variables for sensitive data
-- Validate all user inputs
-- Parameterized queries only
-- CSRF protection enabled
+- 不硬编码秘密
+- 敏感数据使用环境变量
+- 验证所有用户输入
+- 仅使用参数化查询
+- CSRF 保护已启用
 
-## File Structure
+## 文件结构
 
 ```
 src/
 |-- app/              # Next.js app router
-|-- components/       # Reusable UI components
-|-- hooks/            # Custom React hooks
-|-- lib/              # Utility libraries
-|-- types/            # TypeScript definitions
+|-- components/       # 可重用 UI 组件
+|-- hooks/            # 自定义 React hooks
+|-- lib/              # 工具库
+|-- types/            # TypeScript 定义
 ```
 
-## Key Patterns
+## 关键模式
 
-### API Response Format
+### API 响应格式
 
 ```typescript
 interface ApiResponse<T> {
@@ -62,7 +62,7 @@ interface ApiResponse<T> {
 }
 ```
 
-### Error Handling
+### 错误处理
 
 ```typescript
 try {
@@ -74,27 +74,27 @@ try {
 }
 ```
 
-## Environment Variables
+## 环境变量
 
 ```bash
-# Required
+# 必需
 DATABASE_URL=
 API_KEY=
 
-# Optional
+# 可选
 DEBUG=false
 ```
 
-## Available Commands
+## 可用命令
 
-- `/tdd` - Test-driven development workflow
-- `/plan` - Create implementation plan
-- `/code-review` - Review code quality
-- `/build-fix` - Fix build errors
+- `/tdd` - 测试驱动开发工作流
+- `/plan` - 创建实施计划
+- `/code-review` - 审查代码质量
+- `/build-fix` - 修复构建错误
 
-## Git Workflow
+## Git 工作流
 
-- Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
-- Never commit to main directly
-- PRs require review
-- All tests must pass before merge
+- 约定式提交：`feat:`、`fix:`、`refactor:`、`docs:`、`test:`
+- 绝不直接提交到 main
+- PR 需要审查
+- 合并前所有测试必须通过

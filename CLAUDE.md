@@ -6,12 +6,36 @@
 
 ```
 nothing-claude-code/
-├── CLAUDE.md           # 本文件 - 项目指引
-├── README.md           # 快速入门
-├── 快速参考.md         # 命令速查表
-├── 核心原则.md         # 核心开发理念
-└── rules/             # 规则集
-    └── common/         # 通用规则
+├── README.md              # 项目介绍
+├── CLAUDE.md              # 本文件 - 项目指引
+├── 快速参考.md            # 命令速查表
+├── 核心原则.md            # 核心开发理念
+├── rules/                 # 规则集
+│   ├── common/           # 通用规则
+│   │   ├── coding-style.md
+│   │   ├── git-workflow.md
+│   │   ├── hooks.md
+│   │   ├── patterns.md
+│   │   ├── performance.md
+│   │   ├── security.md
+│   │   ├── testing.md
+│   │   └── agents.md
+│   ├── cpp/              # C++ 规则
+│   ├── csharp/           # C# 规则
+│   ├── golang/           # Go 规则
+│   ├── java/             # Java 规则
+│   ├── kotlin/           # Kotlin 规则
+│   ├── perl/             # Perl 规则
+│   ├── php/              # PHP 规则
+│   ├── python/           # Python 规则
+│   ├── rust/             # Rust 规则
+│   ├── swift/            # Swift 规则
+│   └── typescript/       # TypeScript/JavaScript 规则
+├── .claude/              # Claude Code 配置
+│   └── commands/         # 工作流命令
+├── .kiro/                # Kiro 模板
+│   └── steering/          # Steering 模板
+└── agents/              # Agent 定义（英文）
 ```
 
 ## 常用命令

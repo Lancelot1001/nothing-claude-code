@@ -1,47 +1,47 @@
-# Rust API Service — Project CLAUDE.md
+# Rust API 服务 — 项目 CLAUDE.md
 
-> Real-world example for a Rust API service with Axum, PostgreSQL, and Docker.
-> Copy this to your project root and customize for your service.
+> Rust API 服务 + Axum + PostgreSQL + Docker 的真实示例。
+> 复制到项目根目录并为你的服务定制。
 
-## Project Overview
+## 项目概述
 
-**Stack:** Rust 1.78+, Axum (web framework), SQLx (async database), PostgreSQL, Tokio (async runtime), Docker
+**技术栈：** Rust 1.78+、Axum（Web 框架）、SQLx（异步数据库）、PostgreSQL、Tokio（异步运行时）、Docker
 
-**Architecture:** Layered architecture with handler → service → repository separation. Axum for HTTP, SQLx for type-checked SQL at compile time, Tower middleware for cross-cutting concerns.
+**架构：** 分层架构，handler → service → repository 分离。Axum 用于 HTTP，SQLx 用于编译时类型检查的 SQL，Tower 中间件用于横切关注点。
 
-## Critical Rules
+## 关键规则
 
-### Rust Conventions
+### Rust 约定
 
-- Use `thiserror` for library errors, `anyhow` only in binary crates or tests
-- No `.unwrap()` or `.expect()` in production code — propagate errors with `?`
-- Prefer `&str` over `String` in function parameters; return `String` when ownership transfers
-- Use `clippy` with `#![deny(clippy::all, clippy::pedantic)]` — fix all warnings
-- Derive `Debug` on all public types; derive `Clone`, `PartialEq` only when needed
-- No `unsafe` blocks unless justified with a `// SAFETY:` comment
+- 库错误使用 `thiserror`，仅在二进制 crate 或测试中使用 `anyhow`
+- 生产代码中无 `.unwrap()` 或 `.expect()`——用 `?` 传播错误
+- 函数参数中偏好 `&str` 而非 `String`；所有权转移时返回 `String`
+- 使用 `clippy` 加 `#![deny(clippy::all, clippy::pedantic)]`——修复所有警告
+- 所有公共类型派生 `Debug`；仅在需要时派生 `Clone`、`PartialEq`
+- 除非有 `// SAFETY:` 注释证明，否则不使用 `unsafe` 块
 
-### Database
+### 数据库
 
-- All queries use SQLx `query!` or `query_as!` macros — compile-time verified against the schema
-- Migrations in `migrations/` using `sqlx migrate` — never alter the database directly
-- Use `sqlx::Pool<Postgres>` as shared state — never create connections per request
-- All queries use parameterized placeholders (`$1`, `$2`) — never string formatting
+- 所有查询使用 SQLx `query!` 或 `query_as!` 宏——编译时对照 schema 验证
+- 迁移在 `migrations/` 中使用 `sqlx migrate`——绝不直接修改数据库
+- 使用 `sqlx::Pool<Postgres>` 作为共享状态——绝不每个请求创建连接
+- 所有查询使用参数化占位符（`$1`、`$2`）——绝不字符串格式化
 
 ```rust
-// BAD: String interpolation (SQL injection risk)
+// BAD: 字符串插值（SQL 注入风险）
 let q = format!("SELECT * FROM users WHERE id = '{}'", id);
 
-// GOOD: Parameterized query, compile-time checked
+// GOOD: 参数化查询，编译时检查
 let user = sqlx::query_as!(User, "SELECT * FROM users WHERE id = $1", id)
     .fetch_optional(&pool)
     .await?;
 ```
 
-### Error Handling
+### 错误处理
 
-- Define a domain error enum per module with `thiserror`
-- Map errors to HTTP responses via `IntoResponse` — never expose internal details
-- Use `tracing` for structured logging — never `println!` or `eprintln!`
+- 每模块用 `thiserror` 定义领域错误枚举
+- 通过 `IntoResponse` 将错误映射到 HTTP 响应——绝不暴露内部详情
+- 使用 `tracing` 进行结构化日志——绝不使用 `println!` 或 `eprintln!`
 
 ```rust
 use thiserror::Error;
@@ -74,59 +74,59 @@ impl IntoResponse for AppError {
 }
 ```
 
-### Testing
+### 测试
 
-- Unit tests in `#[cfg(test)]` modules within each source file
-- Integration tests in `tests/` directory using a real PostgreSQL (Testcontainers or Docker)
-- Use `#[sqlx::test]` for database tests with automatic migration and rollback
-- Mock external services with `mockall` or `wiremock`
+- 单元测试在每个源文件的 `#[cfg(test)]` 模块中
+- 集成测试在 `tests/` 目录，使用真实 PostgreSQL（Testcontainers 或 Docker）
+- 使用 `#[sqlx::test]` 进行数据库测试，自动迁移和回滚
+- 用 `mockall` 或 `wiremock` 模拟外部服务
 
-### Code Style
+### 代码风格
 
-- Max line length: 100 characters (enforced by rustfmt)
-- Group imports: `std`, external crates, `crate`/`super` — separated by blank lines
-- Modules: one file per module, `mod.rs` only for re-exports
-- Types: PascalCase, functions/variables: snake_case, constants: UPPER_SNAKE_CASE
+- 最大行长度：100 字符（由 rustfmt 强制）
+- 分组导入：`std`、外部 crate、`crate`/`super`——用空行分隔
+- 模块：每模块一个文件，`mod.rs` 仅用于重导出
+- 类型：PascalCase，函数/变量：snake_case，常量：UPPER_SNAKE_CASE
 
-## File Structure
+## 文件结构
 
 ```
 src/
-  main.rs              # Entrypoint, server setup, graceful shutdown
-  lib.rs               # Re-exports for integration tests
-  config.rs            # Environment config with envy or figment
-  router.rs            # Axum router with all routes
+  main.rs              # 入口点、服务器设置、优雅关闭
+  lib.rs               # 为集成测试重导出
+  config.rs            # 通过 envy 或 figment 的环境配置
+  router.rs            # 带所有路由的 Axum 路由器
   middleware/
-    auth.rs            # JWT extraction and validation
-    logging.rs         # Request/response tracing
+    auth.rs            # JWT 提取和验证
+    logging.rs         # 请求/响应追踪
   handlers/
-    mod.rs             # Route handlers (thin — delegate to services)
+    mod.rs             # 路由处理器（薄——委托给 services）
     users.rs
     orders.rs
   services/
-    mod.rs             # Business logic
+    mod.rs             # 业务逻辑
     users.rs
     orders.rs
   repositories/
-    mod.rs             # Database access (SQLx queries)
+    mod.rs             # 数据库访问（SQLx 查询）
     users.rs
     orders.rs
   domain/
-    mod.rs             # Domain types, error enums
+    mod.rs             # 领域类型、错误枚举
     user.rs
     order.rs
 migrations/
   001_create_users.sql
   002_create_orders.sql
 tests/
-  common/mod.rs        # Shared test helpers, test server setup
-  api_users.rs         # Integration tests for user endpoints
-  api_orders.rs        # Integration tests for order endpoints
+  common/mod.rs        # 共享测试辅助函数、测试服务器设置
+  api_users.rs         # 用户端点集成测试
+  api_orders.rs        # 订单端点集成测试
 ```
 
-## Key Patterns
+## 关键模式
 
-### Handler (Thin)
+### Handler（薄）
 
 ```rust
 async fn create_user(
@@ -138,7 +138,7 @@ async fn create_user(
 }
 ```
 
-### Service (Business Logic)
+### Service（业务逻辑）
 
 ```rust
 impl UserService {
@@ -155,7 +155,7 @@ impl UserService {
 }
 ```
 
-### Repository (Data Access)
+### Repository（数据访问）
 
 ```rust
 impl UserRepository {
@@ -183,7 +183,7 @@ impl UserRepository {
 }
 ```
 
-### Integration Test
+### 集成测试
 
 ```rust
 #[tokio::test]
@@ -218,7 +218,7 @@ async fn test_create_user_duplicate_email() {
 }
 ```
 
-## Environment Variables
+## 环境变量
 
 ```bash
 # Server
@@ -237,49 +237,49 @@ JWT_EXPIRY_HOURS=24
 CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
-## Testing Strategy
+## 测试策略
 
 ```bash
-# Run all tests
+# 运行所有测试
 cargo test
 
-# Run with output
+# 带输出运行
 cargo test -- --nocapture
 
-# Run specific test module
+# 运行特定测试模块
 cargo test api_users
 
-# Check coverage (requires cargo-llvm-cov)
+# 检查覆盖率（需要 cargo-llvm-cov）
 cargo llvm-cov --html
 open target/llvm-cov/html/index.html
 
 # Lint
 cargo clippy -- -D warnings
 
-# Format check
+# 格式检查
 cargo fmt -- --check
 ```
 
-## ECC Workflow
+## ECC 工作流
 
 ```bash
-# Planning
+# 规划
 /plan "Add order fulfillment with Stripe payment"
 
-# Development with TDD
+# 使用 TDD 开发
 /tdd                    # cargo test-based TDD workflow
 
-# Review
+# 审查
 /code-review            # Rust-specific code review
 /security-scan          # Dependency audit + unsafe scan
 
-# Verification
+# 验证
 /verify                 # Build, clippy, test, security scan
 ```
 
-## Git Workflow
+## Git 工作流
 
-- `feat:` new features, `fix:` bug fixes, `refactor:` code changes
-- Feature branches from `main`, PRs required
-- CI: `cargo fmt --check`, `cargo clippy`, `cargo test`, `cargo audit`
-- Deploy: Docker multi-stage build with `scratch` or `distroless` base
+- `feat:` 新功能，`fix:` bug 修复，`refactor:` 代码更改
+- 从 `main` 创建功能分支，需要 PR
+- CI：`cargo fmt --check`、`cargo clippy`、`cargo test`、`cargo audit`
+- 部署：使用 `scratch` 或 `distroless` 基础的多阶段 Docker 构建

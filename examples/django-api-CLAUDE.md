@@ -1,54 +1,54 @@
-# Django REST API — Project CLAUDE.md
+# Django REST API — 项目 CLAUDE.md
 
-> Real-world example for a Django REST Framework API with PostgreSQL and Celery.
-> Copy this to your project root and customize for your service.
+> Django REST Framework API + PostgreSQL + Celery 的真实示例。
+> 复制到项目根目录并为你的服务定制。
 
-## Project Overview
+## 项目概述
 
-**Stack:** Python 3.12+, Django 5.x, Django REST Framework, PostgreSQL, Celery + Redis, pytest, Docker Compose
+**技术栈：** Python 3.12+、Django 5.x、Django REST Framework、PostgreSQL、Celery + Redis、pytest、Docker Compose
 
-**Architecture:** Domain-driven design with apps per business domain. DRF for API layer, Celery for async tasks, pytest for testing. All endpoints return JSON — no template rendering.
+**架构：** 按业务领域划分的领域驱动设计应用。DRF 用于 API 层，Celery 用于异步任务，pytest 用于测试。所有端点返回 JSON——无模板渲染。
 
-## Critical Rules
+## 关键规则
 
-### Python Conventions
+### Python 约定
 
-- Type hints on all function signatures — use `from __future__ import annotations`
-- No `print()` statements — use `logging.getLogger(__name__)`
-- f-strings for string formatting, never `%` or `.format()`
-- Use `pathlib.Path` not `os.path` for file operations
-- Imports sorted with isort: stdlib, third-party, local (enforced by ruff)
+- 所有函数签名使用类型提示——使用 `from __future__ import annotations`
+- 不使用 `print()` 语句——使用 `logging.getLogger(__name__)`
+- 字符串格式化用 f-string，绝不用 `%` 或 `.format()`
+- 文件操作使用 `pathlib.Path` 而非 `os.path`
+- 用 isort 排序导入：stdlib、第三方、本地（由 ruff 强制）
 
-### Database
+### 数据库
 
-- All queries use Django ORM — raw SQL only with `.raw()` and parameterized queries
-- Migrations committed to git — never use `--fake` in production
-- Use `select_related()` and `prefetch_related()` to prevent N+1 queries
-- All models must have `created_at` and `updated_at` auto-fields
-- Indexes on any field used in `filter()`, `order_by()`, or `WHERE` clauses
+- 所有查询使用 Django ORM——原始 SQL 仅与 `.raw()` 和参数化查询一起使用
+- 迁移提交到 git——生产环境绝不使用 `--fake`
+- 使用 `select_related()` 和 `prefetch_related()` 防止 N+1 查询
+- 所有模型必须有 `created_at` 和 `updated_at` 自动字段
+- 在 `filter()`、`order_by()` 或 WHERE 子句中使用的任何字段上建立索引
 
 ```python
-# BAD: N+1 query
+# BAD: N+1 查询
 orders = Order.objects.all()
 for order in orders:
-    print(order.customer.name)  # hits DB for each order
+    print(order.customer.name)  # 每个 order 都访问数据库
 
-# GOOD: Single query with join
+# GOOD: 带 JOIN 的单个查询
 orders = Order.objects.select_related("customer").all()
 ```
 
-### Authentication
+### 认证
 
-- JWT via `djangorestframework-simplejwt` — access token (15 min) + refresh token (7 days)
-- Permission classes on every view — never rely on default
-- Use `IsAuthenticated` as base, add custom permissions for object-level access
-- Token blacklisting enabled for logout
+- 通过 `djangorestframework-simplejwt` 的 JWT — access token（15 分钟）+ refresh token（7 天）
+- 每个视图都有权限类——绝不依赖默认
+- 使用 `IsAuthenticated` 作为基础，为对象级访问添加自定义权限
+- 登出启用 Token 黑名单
 
 ### Serializers
 
-- Use `ModelSerializer` for simple CRUD, `Serializer` for complex validation
-- Separate read and write serializers when input/output shapes differ
-- Validate at serializer level, not in views — views should be thin
+- 简单 CRUD 使用 `ModelSerializer`，复杂验证使用 `Serializer`
+- 输入/输出形状不同时使用分离的读写 serializers
+- 在 serializer 级别验证，而非视图中——视图应该薄
 
 ```python
 class CreateOrderSerializer(serializers.Serializer):
@@ -69,11 +69,11 @@ class OrderDetailSerializer(serializers.ModelSerializer):
         fields = ["id", "customer", "product", "quantity", "total", "status", "created_at"]
 ```
 
-### Error Handling
+### 错误处理
 
-- Use DRF exception handler for consistent error responses
-- Custom exceptions for business logic in `core/exceptions.py`
-- Never expose internal error details to clients
+- 使用 DRF 异常处理器获得一致的错误响应
+- 业务逻辑的自定义异常放在 `core/exceptions.py`
+- 绝不向客户端暴露内部错误详情
 
 ```python
 # core/exceptions.py
@@ -85,56 +85,56 @@ class InsufficientStockError(APIException):
     default_code = "insufficient_stock"
 ```
 
-### Code Style
+### 代码风格
 
-- No emojis in code or comments
-- Max line length: 120 characters (enforced by ruff)
-- Classes: PascalCase, functions/variables: snake_case, constants: UPPER_SNAKE_CASE
-- Views are thin — business logic lives in service functions or model methods
+- 代码或注释中不用 emoji
+- 最大行长度：120 字符（由 ruff 强制）
+- 类：PascalCase，函数/变量：snake_case，常量：UPPER_SNAKE_CASE
+- 视图薄——业务逻辑存在于服务函数或模型方法中
 
-## File Structure
+## 文件结构
 
 ```
 config/
   settings/
-    base.py              # Shared settings
-    local.py             # Dev overrides (DEBUG=True)
-    production.py        # Production settings
-  urls.py                # Root URL config
-  celery.py              # Celery app configuration
+    base.py              # 共享设置
+    local.py             # 开发覆盖（DEBUG=True）
+    production.py        # 生产设置
+  urls.py                # 根 URL 配置
+  celery.py              # Celery 应用配置
 apps/
-  accounts/              # User auth, registration, profile
+  accounts/              # 用户认证、注册、个人资料
     models.py
     serializers.py
     views.py
-    services.py          # Business logic
+    services.py          # 业务逻辑
     tests/
       test_views.py
       test_services.py
       factories.py       # Factory Boy factories
-  orders/                # Order management
+  orders/                # 订单管理
     models.py
     serializers.py
     views.py
     services.py
-    tasks.py             # Celery tasks
+    tasks.py             # Celery 任务
     tests/
-  products/              # Product catalog
+  products/              # 产品目录
     models.py
     serializers.py
     views.py
     tests/
 core/
-  exceptions.py          # Custom API exceptions
-  permissions.py         # Shared permission classes
-  pagination.py          # Custom pagination
-  middleware.py          # Request logging, timing
+  exceptions.py          # 自定义 API 异常
+  permissions.py         # 共享权限类
+  pagination.py          # 自定义分页
+  middleware.py          # 请求日志、计时
   tests/
 ```
 
-## Key Patterns
+## 关键模式
 
-### Service Layer
+### 服务层
 
 ```python
 # apps/orders/services.py
@@ -162,7 +162,7 @@ def create_order(*, customer, product_id: uuid.UUID, quantity: int) -> Order:
     return order
 ```
 
-### View Pattern
+### 视图模式
 
 ```python
 # apps/orders/views.py
@@ -192,7 +192,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         serializer.instance = order
 ```
 
-### Test Pattern (pytest + Factory Boy)
+### 测试模式（pytest + Factory Boy）
 
 ```python
 # apps/orders/tests/factories.py
@@ -243,7 +243,7 @@ class TestCreateOrder:
         assert response.status_code == 401
 ```
 
-## Environment Variables
+## 环境变量
 
 ```bash
 # Django
@@ -266,43 +266,43 @@ EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 EMAIL_HOST=smtp.example.com
 ```
 
-## Testing Strategy
+## 测试策略
 
 ```bash
-# Run all tests
+# 运行所有测试
 pytest --cov=apps --cov-report=term-missing
 
-# Run specific app tests
+# 运行特定 app 测试
 pytest apps/orders/tests/ -v
 
-# Run with parallel execution
+# 并行执行
 pytest -n auto
 
-# Only failing tests from last run
+# 仅上次运行的失败测试
 pytest --lf
 ```
 
-## ECC Workflow
+## ECC 工作流
 
 ```bash
-# Planning
+# 规划
 /plan "Add order refund system with Stripe integration"
 
-# Development with TDD
+# 使用 TDD 开发
 /tdd                    # pytest-based TDD workflow
 
-# Review
+# 审查
 /python-review          # Python-specific code review
 /security-scan          # Django security audit
 /code-review            # General quality check
 
-# Verification
+# 验证
 /verify                 # Build, lint, test, security scan
 ```
 
-## Git Workflow
+## Git 工作流
 
-- `feat:` new features, `fix:` bug fixes, `refactor:` code changes
-- Feature branches from `main`, PRs required
-- CI: ruff (lint + format), mypy (types), pytest (tests), safety (dep check)
-- Deploy: Docker image, managed via Kubernetes or Railway
+- `feat:` 新功能，`fix:` bug 修复，`refactor:` 代码更改
+- 从 `main` 创建功能分支，需要 PR
+- CI：ruff（lint + format）、mypy（类型）、pytest（测试）、safety（依赖检查）
+- 部署：Docker 镜像，通过 Kubernetes 或 Railway 管理

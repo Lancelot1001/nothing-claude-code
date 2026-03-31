@@ -22,6 +22,9 @@ cp -r nothing-claude-code/rules/common ~/.claude/rules/
 | `hooks.md` | Hook 规则：触发器类型、配置格式 |
 | `agents.md` | 子agent规则：agent列表、使用时机 |
 | `performance.md` | 性能规则：模型选择、上下文管理 |
+| `patterns.md` | 设计模式：Repository 模式、API 响应格式、Skeleton Projects |
+| `code-review.md` | 代码审查标准：审查流程、严重级别、常见问题 |
+| `development-workflow.md` | 开发工作流：研究规划、TDD、代码审查流程 |
 
 ## 规则格式
 
@@ -38,8 +41,16 @@ cp -r nothing-claude-code/rules/common ~/.claude/rules/
 ```
 ~/.claude/rules/
 ├── common/           # 通用规则
-├── typescript/      # TypeScript 特定
-├── python/          # Python 特定
+├── cpp/             # C++ 特定
+├── csharp/          # C# 特定
 ├── golang/          # Go 特定
+├── java/            # Java 特定
+├── kotlin/          # Kotlin 特定
+├── perl/            # Perl 特定
+├── php/             # PHP 特定
+├── python/          # Python 特定
+├── rust/            # Rust 特定
+├── swift/           # Swift 特定
+├── typescript/       # TypeScript/JavaScript 特定
 └── ...
 ```

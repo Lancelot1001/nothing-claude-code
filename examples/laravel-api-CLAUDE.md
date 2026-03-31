@@ -1,27 +1,27 @@
-# Laravel API — Project CLAUDE.md
+# Laravel API — 项目 CLAUDE.md
 
-> Real-world example for a Laravel API with PostgreSQL, Redis, and queues.
-> Copy this to your project root and customize for your service.
+> Laravel API + PostgreSQL + Redis + queues 的真实示例。
+> 复制到项目根目录并为你的服务定制。
 
-## Project Overview
+## 项目概述
 
-**Stack:** PHP 8.2+, Laravel 11.x, PostgreSQL, Redis, Horizon, PHPUnit/Pest, Docker Compose
+**技术栈：** PHP 8.2+、Laravel 11.x、PostgreSQL、Redis、Horizon、PHPUnit/Pest、Docker Compose
 
-**Architecture:** Modular Laravel app with controllers -> services -> actions, Eloquent ORM, queues for async work, Form Requests for validation, and API Resources for consistent JSON responses.
+**架构：** 模块化 Laravel 应用，controllers -> services -> actions，Eloquent ORM，队列用于异步工作，Form Requests 用于验证，API Resources 用于一致的 JSON 响应。
 
-## Critical Rules
+## 关键规则
 
-### PHP Conventions
+### PHP 约定
 
-- `declare(strict_types=1)` in all PHP files
-- Use typed properties and return types everywhere
-- Prefer `final` classes for services and actions
-- No `dd()` or `dump()` in committed code
-- Formatting via Laravel Pint (PSR-12)
+- 所有 PHP 文件中使用 `declare(strict_types=1)`
+- 处处使用类型化属性和返回类型
+- Services 和 actions 偏好 `final` 类
+- 提交代码中无 `dd()` 或 `dump()`
+- 通过 Laravel Pint 格式化（PSR-12）
 
-### API Response Envelope
+### API 响应包装
 
-All API responses use a consistent envelope:
+所有 API 响应使用一致的包装：
 
 ```json
 {
@@ -32,38 +32,38 @@ All API responses use a consistent envelope:
 }
 ```
 
-### Database
+### 数据库
 
-- Migrations committed to git
-- Use Eloquent or query builder (no raw SQL unless parameterized)
-- Index any column used in `where` or `orderBy`
-- Avoid mutating model instances in services; prefer create/update through repositories or query builders
+- 迁移提交到 git
+- 使用 Eloquent 或查询构建器（无原始 SQL，除非是参数化的）
+- 在 `where` 或 `orderBy` 中使用的任何列上建立索引
+- 避免在 services 中修改模型实例；偏好通过 repositories 或查询构建器创建/更新
 
-### Authentication
+### 认证
 
-- API auth via Sanctum
-- Use policies for model-level authorization
-- Enforce auth in controllers and services
+- 通过 Sanctum 的 API 认证
+- 使用 policies 进行模型级授权
+- 在 controllers 和 services 中强制认证
 
-### Validation
+### 验证
 
-- Use Form Requests for validation
-- Transform input to DTOs for business logic
-- Never trust request payloads for derived fields
+- 使用 Form Requests 进行验证
+- 将输入转换为 DTOs 用于业务逻辑
+- 绝不信任请求 payload 的派生字段
 
-### Error Handling
+### 错误处理
 
-- Throw domain exceptions in services
-- Map exceptions to HTTP responses in `bootstrap/app.php` via `withExceptions`
-- Never expose internal errors to clients
+- 在 services 中抛出领域异常
+- 通过 `bootstrap/app.php` 中的 `withExceptions` 将异常映射到 HTTP 响应
+- 绝不向客户端暴露内部错误
 
-### Code Style
+### 代码风格
 
-- No emojis in code or comments
-- Max line length: 120 characters
-- Controllers are thin; services and actions hold business logic
+- 代码或注释中不用 emoji
+- 最大行长度：120 字符
+- Controllers 薄；services 和 actions 持有业务逻辑
 
-## File Structure
+## 文件结构
 
 ```
 app/
@@ -92,9 +92,9 @@ routes/
   web.php
 ```
 
-## Key Patterns
+## 关键模式
 
-### Service Layer
+### 服务层
 
 ```php
 <?php
@@ -122,7 +122,7 @@ final class OrderService
 }
 ```
 
-### Controller Pattern
+### 控制器模式
 
 ```php
 <?php
@@ -147,7 +147,7 @@ final class OrdersController extends Controller
 }
 ```
 
-### Policy Pattern
+### Policy 模式
 
 ```php
 <?php
@@ -223,7 +223,7 @@ final class OrderResource extends JsonResource
 }
 ```
 
-### Queue Job
+### 队列 Job
 
 ```php
 <?php
@@ -252,7 +252,7 @@ final class SendOrderConfirmation implements ShouldQueue
 }
 ```
 
-### Test Pattern (Pest)
+### 测试模式（Pest）
 
 ```php
 <?php
@@ -281,7 +281,7 @@ test('user can place order', function () {
 });
 ```
 
-### Test Pattern (PHPUnit)
+### 测试模式（PHPUnit）
 
 ```php
 <?php
@@ -310,10 +310,10 @@ final class OrdersControllerTest extends TestCase
 }
 ```
 
-## Environment Variables
+## 环境变量
 
 ```bash
-# Required
+# 必需
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost
@@ -339,42 +339,42 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 ```
 
-## Testing Strategy
+## 测试策略
 
 ```bash
-# Run all tests
+# 运行所有测试
 php artisan test
 
-# Run with coverage
+# 带覆盖率运行
 php artisan test --coverage
 
-# Run specific test file
+# 运行特定测试文件
 php artisan test --filter=OrdersControllerTest
 
-# Run with parallel execution
+# 并行运行
 php artisan test --parallel
 ```
 
-## ECC Workflow
+## ECC 工作流
 
 ```bash
-# Planning
+# 规划
 /plan "Add order refund system with Stripe integration"
 
-# Development with TDD
+# 使用 TDD 开发
 /tdd                    # PHPUnit/Pest-based TDD workflow
 
-# Review
+# 审查
 /code-review            # General quality check
 /security-scan          # Security audit
 
-# Verification
+# 验证
 /verify                 # Build, test, security scan
 ```
 
-## Git Workflow
+## Git 工作流
 
-- `feat:` new features, `fix:` bug fixes, `refactor:` code changes
-- Feature branches from `main`, PRs required
-- CI: Pint (lint), Pest (tests)
-- Deploy: Laravel Forge or Vapor
+- `feat:` 新功能，`fix:` bug 修复，`refactor:` 代码更改
+- 从 `main` 创建功能分支，需要 PR
+- CI：Pint（lint）、Pest（测试）
+- 部署：Laravel Forge 或 Vapor

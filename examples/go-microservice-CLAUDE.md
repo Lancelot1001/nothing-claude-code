@@ -1,37 +1,37 @@
-# Go Microservice — Project CLAUDE.md
+# Go 微服务 — 项目 CLAUDE.md
 
-> Real-world example for a Go microservice with PostgreSQL, gRPC, and Docker.
-> Copy this to your project root and customize for your service.
+> Go 微服务 + PostgreSQL + gRPC + Docker 的真实示例。
+> 复制到项目根目录并为你的服务定制。
 
-## Project Overview
+## 项目概述
 
-**Stack:** Go 1.22+, PostgreSQL, gRPC + REST (grpc-gateway), Docker, sqlc (type-safe SQL), Wire (dependency injection)
+**技术栈：** Go 1.22+、PostgreSQL、gRPC + REST (grpc-gateway)、Docker、sqlc（类型安全 SQL）、Wire（依赖注入）
 
-**Architecture:** Clean architecture with domain, repository, service, and handler layers. gRPC as primary transport with REST gateway for external clients.
+**架构：** 清晰架构，分 domain、repository、service 和 handler 层。gRPC 作为主要传输，REST 网关用于外部客户端。
 
-## Critical Rules
+## 关键规则
 
-### Go Conventions
+### Go 约定
 
-- Follow Effective Go and the Go Code Review Comments guide
-- Use `errors.New` / `fmt.Errorf` with `%w` for wrapping — never string matching on errors
-- No `init()` functions — explicit initialization in `main()` or constructors
-- No global mutable state — pass dependencies via constructors
-- Context must be the first parameter and propagated through all layers
+- 遵循 Effective Go 和 Go Code Review Comments 指南
+- 使用 `errors.New` / `fmt.Errorf` 加 `%w` 包装——绝不字符串匹配错误
+- 不使用 `init()` 函数——在 `main()` 或构造函数中显式初始化
+- 无全局可变状态——通过构造函数传递依赖
+- Context 必须是第一个参数并在所有层中传播
 
-### Database
+### 数据库
 
-- All queries in `queries/` as plain SQL — sqlc generates type-safe Go code
-- Migrations in `migrations/` using golang-migrate — never alter the database directly
-- Use transactions for multi-step operations via `pgx.Tx`
-- All queries must use parameterized placeholders (`$1`, `$2`) — never string formatting
+- 所有查询放在 `queries/` 作为纯 SQL——sqlc 生成类型安全的 Go 代码
+- 迁移在 `migrations/` 中使用 golang-migrate——绝不直接修改数据库
+- 使用 `pgx.Tx` 的事务处理多步操作
+- 所有查询使用参数化占位符（`$1`、`$2`）——绝不字符串格式化
 
-### Error Handling
+### 错误处理
 
-- Return errors, don't panic — panics are only for truly unrecoverable situations
-- Wrap errors with context: `fmt.Errorf("creating user: %w", err)`
-- Define sentinel errors in `domain/errors.go` for business logic
-- Map domain errors to gRPC status codes in the handler layer
+- 返回错误，不 panic——panic 仅用于真正不可恢复的情况
+- 用上下文包装错误：`fmt.Errorf("creating user: %w", err)`
+- 在 `domain/errors.go` 中定义业务逻辑的哨兵错误
+- 在 handler 层将领域错误映射到 gRPC 状态码
 
 ```go
 // Domain layer — sentinel errors
@@ -53,51 +53,51 @@ func toGRPCError(err error) error {
 }
 ```
 
-### Code Style
+### 代码风格
 
-- No emojis in code or comments
-- Exported types and functions must have doc comments
-- Keep functions under 50 lines — extract helpers
-- Use table-driven tests for all logic with multiple cases
-- Prefer `struct{}` for signal channels, not `bool`
+- 代码或注释中不用 emoji
+- 导出类型和函数必须有文档注释
+- 函数保持在 50 行以内——提取辅助函数
+- 所有有多情况的逻辑使用表驱动测试
+- 偏好 `struct{}` 用于信号通道，而非 `bool`
 
-## File Structure
+## 文件结构
 
 ```
 cmd/
   server/
-    main.go              # Entrypoint, Wire injection, graceful shutdown
+    main.go              # 入口点、Wire 注入、优雅关闭
 internal/
-  domain/                # Business types and interfaces
-    user.go              # User entity and repository interface
-    errors.go            # Sentinel errors
-  service/               # Business logic
+  domain/                # 业务类型和接口
+    user.go              # User 实体和 repository 接口
+    errors.go            # 哨兵错误
+  service/               # 业务逻辑
     user_service.go
     user_service_test.go
-  repository/            # Data access (sqlc-generated + custom)
+  repository/            # 数据访问（sqlc 生成 + 自定义）
     postgres/
       user_repo.go
-      user_repo_test.go  # Integration tests with testcontainers
-  handler/               # gRPC + REST handlers
+      user_repo_test.go  # 使用 testcontainers 的集成测试
+  handler/              # gRPC + REST 处理器
     grpc/
       user_handler.go
     rest/
       user_handler.go
-  config/                # Configuration loading
+  config/                # 配置加载
     config.go
-proto/                   # Protobuf definitions
+proto/                   # Protobuf 定义
   user/v1/
     user.proto
-queries/                 # SQL queries for sqlc
+queries/                 # sqlc 的 SQL 查询
   user.sql
-migrations/              # Database migrations
+migrations/              # 数据库迁移
   001_create_users.up.sql
   001_create_users.down.sql
 ```
 
-## Key Patterns
+## 关键模式
 
-### Repository Interface
+### Repository 接口
 
 ```go
 type UserRepository interface {
@@ -109,7 +109,7 @@ type UserRepository interface {
 }
 ```
 
-### Service with Dependency Injection
+### 带依赖注入的服务
 
 ```go
 type UserService struct {
@@ -149,7 +149,7 @@ func (s *UserService) Create(ctx context.Context, req CreateUserRequest) (*domai
 }
 ```
 
-### Table-Driven Tests
+### 表驱动测试
 
 ```go
 func TestUserService_Create(t *testing.T) {
@@ -196,7 +196,7 @@ func TestUserService_Create(t *testing.T) {
 }
 ```
 
-## Environment Variables
+## 环境变量
 
 ```bash
 # Database
@@ -207,7 +207,7 @@ GRPC_PORT=50051
 REST_PORT=8080
 
 # Auth
-JWT_SECRET=           # Load from vault in production
+JWT_SECRET=           # 生产环境从 vault 加载
 TOKEN_EXPIRY=24h
 
 # Observability
@@ -215,53 +215,53 @@ LOG_LEVEL=info        # debug, info, warn, error
 OTEL_ENDPOINT=        # OpenTelemetry collector
 ```
 
-## Testing Strategy
+## 测试策略
 
 ```bash
-/go-test             # TDD workflow for Go
-/go-review           # Go-specific code review
-/go-build            # Fix build errors
+/go-test             # Go TDD 工作流
+/go-review           # Go 代码审查
+/go-build            # 修复构建错误
 ```
 
-### Test Commands
+### 测试命令
 
 ```bash
-# Unit tests (fast, no external deps)
+# 单元测试（快速，无外部依赖）
 go test ./internal/... -short -count=1
 
-# Integration tests (requires Docker for testcontainers)
+# 集成测试（需要 Docker 用于 testcontainers）
 go test ./internal/repository/... -count=1 -timeout 120s
 
-# All tests with coverage
+# 带覆盖率的所有测试
 go test ./... -coverprofile=coverage.out -count=1
 go tool cover -func=coverage.out  # summary
 go tool cover -html=coverage.out  # browser
 
-# Race detector
+# 竞态检测器
 go test ./... -race -count=1
 ```
 
-## ECC Workflow
+## ECC 工作流
 
 ```bash
-# Planning
+# 规划
 /plan "Add rate limiting to user endpoints"
 
-# Development
-/go-test                  # TDD with Go-specific patterns
+# 开发
+/go-test                  # Go 特定模式的 TDD
 
-# Review
-/go-review                # Go idioms, error handling, concurrency
-/security-scan            # Secrets and vulnerabilities
+# 审查
+/go-review                # Go 惯用模式、错误处理、并发
+/security-scan            # 秘密和漏洞
 
-# Before merge
+# 合并前
 go vet ./...
 staticcheck ./...
 ```
 
-## Git Workflow
+## Git 工作流
 
-- `feat:` new features, `fix:` bug fixes, `refactor:` code changes
-- Feature branches from `main`, PRs required
-- CI: `go vet`, `staticcheck`, `go test -race`, `golangci-lint`
-- Deploy: Docker image built in CI, deployed to Kubernetes
+- `feat:` 新功能，`fix:` bug 修复，`refactor:` 代码更改
+- 从 `main` 创建功能分支，需要 PR
+- CI：`go vet`、`staticcheck`、`go test -race`、`golangci-lint`
+- 部署：CI 中构建 Docker 镜像，部署到 Kubernetes

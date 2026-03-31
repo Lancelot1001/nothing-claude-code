@@ -1,65 +1,65 @@
-# The Shorthand Guide to Everything Agentic Security
+# Everything Agentic Security 简明指南
 
 ---
 
-It's been a while since my last article now. Spent time working on building out the ECC devtooling ecosystem. One of the few hot but important topics during that stretch has been agent security.
+距离上一篇文章已经有一段时间了。那段时间花在构建 ECC devtooling 生态系统上。在此期间少数热门但重要的主题之一是 agent 安全。
 
-Widespread adoption of open source agents is here. OpenClaw and others run about your computer. Continuous run harnesses like Claude Code and Codex (using ECC) increase the surface area; and on February 25, 2026, Check Point Research published a Claude Code disclosure that should have ended the "this could happen but won't / is overblown" phase of the conversation for good.
+开源 agents 的广泛采用已经到来。OpenClaw 和其他 agents 在你的电脑上运行。像 Claude Code 和 Codex（使用 ECC）这样的持续运行 harnesses 增加了攻击面；2026 年 2 月 25 日，Check Point Research 发布了 Claude Code 披露，应该结束了"这可能发生但不会 / 被夸大了"的对话阶段。
 
-The tooling we trust is also the tooling being targeted. That is the shift. Prompt injection is no longer some goofy model failure or a funny jailbreak screenshot; in an agentic system it can become shell execution, secret exposure, workflow abuse, or quiet lateral movement.
-
----
-
-## Attack Vectors / Surfaces
-
-Attack vectors are essentially any entry point of interaction. The more services your agent is connected to the more risk you accrue. Foreign information fed to your agent increases the risk.
-
-### Attack Chain and Nodes / Components Involved
-
-E.g., my agent is connected via a gateway layer to WhatsApp. An adversary knows your WhatsApp number. They attempt a prompt injection using an existing jailbreak. They spam jailbreaks in the chat. The agent reads the message and takes it as instruction. It executes a response revealing private information. If your agent has root access, or broad filesystem access, or useful credentials loaded, you are compromised.
-
-GitHub PR reviews are another target. Malicious instructions can live in hidden diff comments, issue bodies, linked docs, tool output, even "helpful" review context.
-
-MCP servers are another layer entirely. They can be vulnerable by accident, malicious by design, or simply over-trusted by the client. A tool can exfiltrate data while appearing to provide context or return the information the call is supposed to return. OWASP now has an MCP Top 10 for exactly this reason.
+我们信任的工具也是被攻击的工具。这就是转变。Prompt 注入不再是某种滑稽的模型故障或有趣的越狱截图；在 agentic 系统中，它可能变成 shell 执行、秘密暴露、工作流滥用或静默横向移动。
 
 ---
 
-## Claude Code CVEs (February 2026)
+## 攻击向量 / 攻击面
 
-Check Point Research published the Claude Code findings on February 25, 2026.
+攻击向量本质上是任何交互入口点。你的 agent 连接的服务越多，积累的风险越大。提供给 agent 的外来信息会增加风险。
 
-**CVE-2025-59536.** Project-contained code could run before the trust dialog was accepted.
+### 攻击链及涉及的节点 / 组件
 
-**CVE-2026-21852.** An attacker-controlled project could override `ANTHROPIC_BASE_URL`, redirect API traffic, and leak the API key before trust confirmation.
+例如，我的 agent 通过网关层连接到 WhatsApp。对手知道你的 WhatsApp 号码。他们尝试使用现有越狱进行 prompt 注入。他们在聊天中大量发送越狱。Agent 读取消息并将其作为指令。它执行响应暴露私人信息。如果你的 agent 有 root 访问权限，或广泛的文件系统访问权限，或加载了有用的凭证，你就已被入侵。
 
-**MCP consent abuse.** Check Point also showed how repo-controlled MCP configuration and settings could auto-approve project MCP servers before the user had meaningfully trusted the directory.
+GitHub PR 审查是另一个目标。恶意指令可以藏在隐藏的 diff 注释、issue 正文、链接文档、工具输出，甚至"有用的"审查上下文中。
 
-It's clear how project config, hooks, MCP settings, and environment variables are part of the execution surface now.
+MCP servers 是另一个完全独立的层。它们可能因意外而存在漏洞、因设计而恶意，或简单地被客户端过度信任。工具可以在返回应该返回的信息时窃取数据。OWASP 因此发布了 MCP Top 10。
 
 ---
 
-## The Risk Quantified
+## Claude Code CVE（2026 年 2 月）
 
-| Stat | Detail |
+Check Point Research 于 2026 年 2 月 25 日发布了 Claude Code 发现。
+
+**CVE-2025-59536。** 项目包含的代码可以在信任对话框被接受之前运行。
+
+**CVE-2026-21852。** 攻击者控制的项目可以覆盖 `ANTHROPIC_BASE_URL`，重定向 API 流量，并在信任确认前泄露 API key。
+
+**MCP 同意滥用。** Check Point 还展示了仓库控制的 MCP 配置和设置如何在用户有意义地信任该目录之前自动批准项目 MCP servers。
+
+很明显，项目配置、hooks、MCP 设置和环境变量现在是执行面的一部分。
+
+---
+
+## 风险量化
+
+| 统计数据 | 详情 |
 |------|--------|
-| **CVSS 8.7** | Claude Code hook / pre-trust execution issue: CVE-2025-59536 |
-| **31 companies / 14 industries** | Microsoft's memory poisoning writeup |
-| **3,984** | Public skills scanned in Snyk's ToxicSkills study |
-| **36%** | Skills with prompt injection in that study |
+| **CVSS 8.7** | Claude Code hook / 信任前执行问题：CVE-2025-59536 |
+| **31 家公司 / 14 个行业** | Microsoft 的内存污染报告 |
+| **3,984** | Snyk 的 ToxicSkills 研究中扫描的公共 skills |
+| **36%** | 该研究中有 prompt 注入的 skills |
 
 ---
 
-## Sandboxing
+## 沙箱化
 
-Root access is dangerous. Broad local access is dangerous. Long-lived credentials on the same machine are dangerous. The answer is isolation.
+Root 访问是危险的。广泛的本地访问是危险的。在同一台机器上长期存在的凭证是危险的。答案是隔离。
 
-### Separate the identity first
+### 首先分离身份
 
-Do not give the agent your personal Gmail. Create `agent@yourdomain.com`. Do not give it your main Slack. Create a separate bot user or bot channel. Do not hand it your personal GitHub token. Use a short-lived scoped token or a dedicated bot account.
+不要给你的 agent 你的个人 Gmail。创建 `agent@yourdomain.com`。不要给它你的主 Slack。创建单独的 bot 用户或 bot 频道。不要交出你的个人 GitHub token。使用短期范围 token 或专用 bot 账户。
 
-### Run untrusted work in isolation
+### 在隔离中运行不受信任的工作
 
-For untrusted repos, attachment-heavy workflows, or anything that pulls lots of foreign content, run it in a container, VM, devcontainer, or remote sandbox.
+对于不受信任的仓库、大量附件的工作流，或任何拉取大量外来内容的内容，在容器、VM、devcontainer 或远程沙箱中运行。
 
 ```yaml
 services:
@@ -78,11 +78,11 @@ networks:
     internal: true
 ```
 
-`internal: true` matters. If the agent is compromised, it cannot phone home unless you deliberately give it a route out.
+`internal: true` 很重要。如果 agent 被入侵，它无法联系外部，除非你故意给它一条出路。
 
-### Restrict tools and paths
+### 限制工具和路径
 
-If your harness supports tool permissions, start with deny rules around the obvious sensitive material:
+如果你的 harness 支持工具权限，从围绕明显敏感材料的拒绝规则开始：
 
 ```json
 {
@@ -104,120 +104,120 @@ If your harness supports tool permissions, start with deny rules around the obvi
 
 ---
 
-## Sanitization
+## 净化
 
-Everything an LLM reads is executable context. There is no meaningful distinction between "data" and "instructions" once text enters the context window. Sanitization is not cosmetic; it is part of the runtime boundary.
+LLM 读取的所有内容都是可执行上下文。一旦文本进入上下文窗口，"数据"和"指令"之间没有有意义的区别。净化不是装饰性的；它是运行时边界的一部分。
 
-### Hidden Unicode and Comment Payloads
+### 隐藏的 Unicode 和注释 Payload
 
-Invisible Unicode characters are an easy win for attackers because humans miss them and models do not. Zero-width spaces, word joiners, bidi override characters, HTML comments, buried base64; all of it needs checking.
+不可见的 Unicode 字符是攻击者的简单选择，因为人类会错过而模型不会。零宽空格、单词连接符、双向覆盖字符、HTML 注释、埋藏的 base64；所有这些都需要检查。
 
-### Sanitize attachments before the model sees them
+### 在模型看到之前净化附件
 
-If you process PDFs, screenshots, DOCX files, or HTML, quarantine them first.
+如果你处理 PDF、截图、DOCX 文件或 HTML，先隔离它们。
 
-Practical rule:
-- extract only the text you need
-- strip comments and metadata where possible
-- do not feed live external links straight into a privileged agent
-- if the task is factual extraction, keep the extraction step separate from the action-taking agent
-
----
-
-## Approval Boundaries / Least Agency
-
-The model should not be the final authority for shell execution, network calls, writes outside the workspace, secret reads, or workflow dispatch.
-
-This is where a lot of people still get confused. They think the safety boundary is the system prompt. It is not. The safety boundary is the policy that sits BETWEEN the model and the action.
-
-GitHub's coding-agent setup is a good practical template here:
-- only users with write access can assign work to the agent
-- lower-privilege comments are excluded
-- agent pushes are constrained
-- internet access can be firewall-allowlisted
-- workflows still require human approval
+实用规则：
+- 只提取你需要的文本
+- 尽可能剥离注释和元数据
+- 不要将实时外部链接直接输入特权 agent
+- 如果任务是事实提取，保持提取步骤与执行操作的 agent 分离
 
 ---
 
-## Observability / Logging
+## 审批边界 / 最小代理
 
-If you cannot see what the agent read, what tool it called, and what network destination it tried to hit, you cannot secure it.
+模型不应该是 shell 执行、跨工作区写入、秘密读取或工作流调度的最终权威。
 
-Log at least these:
-- tool name
-- input summary
-- files touched
-- approval decisions
-- network attempts
-- session / task id
+这是很多人仍然困惑的地方。他们认为安全边界是系统提示。不是的。安全边界是坐在模型和动作之间的策略。
 
----
-
-## Kill Switches
-
-Know the difference between graceful and hard kills. `SIGTERM` gives the process a chance to clean up. `SIGKILL` stops it immediately. Both matter.
-
-Also, kill the process group, not just the parent. If you only kill the parent, the children can keep running.
-
-For unattended loops, add a heartbeat. If the agent stops checking in every 30 seconds, kill it automatically.
+GitHub 的编码 agent 设置在这里是一个很好的实用模板：
+- 只有有写权限的用户才能给 agent 分配工作
+- 低权限评论被排除
+- agent 推送受到约束
+- 互联网访问可以通过防火墙白名单
+- 工作流仍然需要人类批准
 
 ---
 
-## Memory
+## 可观测性 / 日志记录
 
-Persistent memory is useful. It is also gasoline.
+如果你看不到 agent 读取了什么、调用了什么工具、以及它试图访问什么网络目的地，你就无法保护它。
 
-You usually forget about that part though right? I mean whose constantly checking their .md files that are already in the knowledge base you've been using for so long. The payload does not have to win in one shot. It can plant fragments, wait, then assemble later.
-
-Anthropic documents that Claude Code loads memory at session start. So keep memory narrow:
-- do not store secrets in memory files
-- separate project memory from user-global memory
-- reset or rotate memory after untrusted runs
-- disable long-lived memory entirely for high-risk workflows
-
----
-
-## The Minimum Bar Checklist
-
-If you are running agents autonomously in 2026, this is the minimum bar:
-- separate agent identities from your personal accounts
-- use short-lived scoped credentials
-- run untrusted work in containers, devcontainers, VMs, or remote sandboxes
-- deny outbound network by default
-- restrict reads from secret-bearing paths
-- sanitize files, HTML, screenshots, and linked content before a privileged agent sees them
-- require approval for unsandboxed shell, egress, deployment, and off-repo writes
-- log tool calls, approvals, and network attempts
-- implement process-group kill and heartbeat-based dead-man switches
-- keep persistent memory narrow and disposable
-- scan skills, hooks, MCP configs, and agent descriptors like any other supply chain artifact
+至少记录这些：
+- 工具名称
+- 输入摘要
+- 访问的文件
+- 审批决定
+- 网络尝试
+- 会话 / 任务 ID
 
 ---
 
-## The Tooling Landscape
+## 杀死开关
 
-The good news is the ecosystem is catching up. Not fast enough, but it is moving.
+了解优雅杀死和硬杀死的区别。`SIGTERM` 给进程一个清理的机会。`SIGKILL` 立即停止它。两者都很重要。
 
-Anthropic has hardened Claude Code and published concrete security guidance around trust, permissions, MCP, memory, hooks, and isolated environments.
+另外，杀掉进程组，而不只是父进程。如果你只杀掉父进程，子进程可以继续运行。
 
-GitHub has built coding-agent controls that clearly assume repo poisoning and privilege abuse are real.
-
-OWASP has an MCP Top 10.
-
-Snyk's `agent-scan` and related work are useful for MCP / skill review.
+对于无人值守循环，添加心跳。如果 agent 每 30 秒停止签入一次，自动杀掉它。
 
 ---
 
-## Close
+## 内存
 
-If you are running agents autonomously, the question is no longer whether prompt injection exists. It does. The question is whether your runtime assumes the model will eventually read something hostile while holding something valuable.
+持久化内存很有用。它也是汽油。
 
-Build as if malicious text will get into context.
-Build as if a tool description can lie.
-Build as if a repo can be poisoned.
-Build as if memory can persist the wrong thing.
-Build as if the model will occasionally lose the argument.
+但你通常会忘记那部分，对吧？我的意思是，谁会不断检查你已经使用了这么久的知识库中的 .md 文件。payload 不需要一击必杀。它可以植入碎片，等待，然后稍后组装。
 
-Then make sure losing that argument is survivable.
+Anthropic 文档记录了 Claude Code 在会话开始时加载内存。所以保持内存狭窄：
+- 不要在内存文件中存储秘密
+- 将项目内存与用户全局内存分离
+- 不受信任的运行后重置或轮换内存
+- 高风险工作流完全禁用长期内存
 
-If you want one rule: never let the convenience layer outrun the isolation layer.
+---
+
+## 最低标准检查清单
+
+如果你在 2026 年自主运行 agents，这是最低标准：
+- 将 agent 身份与你的个人账户分离
+- 使用短期范围凭证
+- 在容器、devcontainers、VM 或远程沙箱中运行不受信任的工作
+- 默认拒绝出站网络
+- 限制从含秘密路径的读取
+- 在特权 agent 看到之前净化文件、HTML、截图和链接内容
+- 沙箱外 shell、出口、部署和离仓写入需要批准
+- 记录工具调用、批准和网络尝试
+- 实现进程组杀死和基于心跳的死人手开关
+- 保持持久化内存狭窄且可处置
+- 像对待其他供应链 artifact 一样扫描 skills、hooks、MCP 配置和 agent 描述符
+
+---
+
+## 工具格局
+
+好消息是生态系统正在迎头赶上。还不够快，但正在前进。
+
+Anthropic 已经加固了 Claude Code，并发布了围绕信任、权限、MCP、内存、hooks 和隔离环境的具体安全指南。
+
+GitHub 构建了明确假设仓库污染和权限滥用是真实的编码 agent 控制。
+
+OWASP 有 MCP Top 10。
+
+Snyk 的 `agent-scan` 和相关工作对 MCP / skill 审查很有用。
+
+---
+
+## 结语
+
+如果你在自主运行 agents，问题不再是 prompt 注入是否存在。它存在。问题是你的运行时是否假设模型在持有有价值的东西时最终会读到敌对内容。
+
+像恶意文本会进入上下文一样构建。
+像工具描述可以撒谎一样构建。
+像仓库可以被污染一样构建。
+像内存可以持久化错误的东西一样构建。
+像模型偶尔会输掉辩论一样构建。
+
+然后确保输掉那场辩论是可以生存的。
+
+如果你要一条规则：永远不要让便利层跑在隔离层前面。

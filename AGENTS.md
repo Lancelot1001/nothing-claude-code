@@ -1,160 +1,160 @@
-# Everything Claude Code (ECC) — Agent Instructions
+# Everything Claude Code (ECC) — Agent 指令
 
-This is a **production-ready AI coding plugin** providing 30 specialized agents, 136 skills, 60 commands, and automated hook workflows for software development.
+这是一个**生产级 AI 编程插件**，提供 30 个专业 agent、136 个 skill、60 个 command，以及自动化 hook 工作流。
 
-**Version:** 1.9.0
+**版本：** 1.9.0
 
-## Core Principles
+## 核心原则
 
-1. **Agent-First** — Delegate to specialized agents for domain tasks
-2. **Test-Driven** — Write tests before implementation, 80%+ coverage required
-3. **Security-First** — Never compromise on security; validate all inputs
-4. **Immutability** — Always create new objects, never mutate existing ones
-5. **Plan Before Execute** — Plan complex features before writing code
+1. **Agent 优先** — 将领域任务委托给专业 agent
+2. **TDD** — 实现前先写测试，要求 80%+ 覆盖率
+3. **安全第一** — 绝不妥协安全；验证所有输入
+4. **不可变性** — 始终创建新对象，不修改现有对象
+5. **先规划后执行** — 写代码前先规划复杂功能
 
-## Available Agents
+## 可用 Agent
 
-| Agent | Purpose | When to Use |
+| Agent | 用途 | 使用时机 |
 |-------|---------|-------------|
-| planner | Implementation planning | Complex features, refactoring |
-| architect | System design and scalability | Architectural decisions |
-| tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code quality and maintainability | After writing/modifying code |
-| security-reviewer | Vulnerability detection | Before commits, sensitive code |
-| build-error-resolver | Fix build/type errors | When build fails |
-| e2e-runner | End-to-end Playwright testing | Critical user flows |
-| refactor-cleaner | Dead code cleanup | Code maintenance |
-| doc-updater | Documentation and codemaps | Updating docs |
-| docs-lookup | Documentation and API reference research | Library/API documentation questions |
-| cpp-reviewer | C++ code review | C++ projects |
-| cpp-build-resolver | C++ build errors | C++ build failures |
-| go-reviewer | Go code review | Go projects |
-| go-build-resolver | Go build errors | Go build failures |
-| kotlin-reviewer | Kotlin code review | Kotlin/Android/KMP projects |
-| kotlin-build-resolver | Kotlin/Gradle build errors | Kotlin build failures |
-| database-reviewer | PostgreSQL/Supabase specialist | Schema design, query optimization |
-| python-reviewer | Python code review | Python projects |
-| java-reviewer | Java and Spring Boot code review | Java/Spring Boot projects |
-| java-build-resolver | Java/Maven/Gradle build errors | Java build failures |
-| chief-of-staff | Communication triage and drafts | Multi-channel email, Slack, LINE, Messenger |
-| loop-operator | Autonomous loop execution | Run loops safely, monitor stalls, intervene |
-| harness-optimizer | Harness config tuning | Reliability, cost, throughput |
-| rust-reviewer | Rust code review | Rust projects |
-| rust-build-resolver | Rust build errors | Rust build failures |
-| pytorch-build-resolver | PyTorch runtime/CUDA/training errors | PyTorch build/training failures |
-| typescript-reviewer | TypeScript/JavaScript code review | TypeScript/JavaScript projects |
+| planner | 实施规划 | 复杂功能、重构 |
+| architect | 系统设计与可扩展性 | 架构决策 |
+| tdd-guide | 测试驱动开发 | 新功能、Bug 修复 |
+| code-reviewer | 代码质量与可维护性 | 写完/修改代码后 |
+| security-reviewer | 漏洞检测 | 提交前、敏感代码 |
+| build-error-resolver | 修复构建/类型错误 | 构建失败时 |
+| e2e-runner | Playwright E2E 测试 | 关键用户流程 |
+| refactor-cleaner | 死代码清理 | 代码维护 |
+| doc-updater | 文档与代码地图更新 | 更新文档 |
+| docs-lookup | 文档与 API 参考研究 | 库/API 文档问题 |
+| cpp-reviewer | C++ 代码审查 | C++ 项目 |
+| cpp-build-resolver | C++ 构建错误 | C++ 构建失败 |
+| go-reviewer | Go 代码审查 | Go 项目 |
+| go-build-resolver | Go 构建错误 | Go 构建失败 |
+| kotlin-reviewer | Kotlin 代码审查 | Kotlin/Android/KMP 项目 |
+| kotlin-build-resolver | Kotlin/Gradle 构建错误 | Kotlin 构建失败 |
+| database-reviewer | PostgreSQL/Supabase 专家 | Schema 设计、查询优化 |
+| python-reviewer | Python 代码审查 | Python 项目 |
+| java-reviewer | Java 和 Spring Boot 代码审查 | Java/Spring Boot 项目 |
+| java-build-resolver | Java/Maven/Gradle 构建错误 | Java 构建失败 |
+| chief-of-staff | 沟通分类与起草 | 多渠道邮件、Slack、 LINE、Messenger |
+| loop-operator | 自主循环执行 | 安全运行循环、监控停滞、干预 |
+| harness-optimizer | Harness 配置调优 | 可靠性、成本、吞吐量 |
+| rust-reviewer | Rust 代码审查 | Rust 项目 |
+| rust-build-resolver | Rust 构建错误 | Rust 构建失败 |
+| pytorch-build-resolver | PyTorch 运行时/CUDA/训练错误 | PyTorch 构建/训练失败 |
+| typescript-reviewer | TypeScript/JavaScript 代码审查 | TypeScript/JavaScript 项目 |
 
-## Agent Orchestration
+## Agent 编排
 
-Use agents proactively without user prompt:
-- Complex feature requests → **planner**
-- Code just written/modified → **code-reviewer**
-- Bug fix or new feature → **tdd-guide**
-- Architectural decision → **architect**
-- Security-sensitive code → **security-reviewer**
-- Multi-channel communication triage → **chief-of-staff**
-- Autonomous loops / loop monitoring → **loop-operator**
-- Harness config reliability and cost → **harness-optimizer**
+无需用户提示主动使用 agent：
+- 复杂功能请求 → **planner**
+- 刚写完/修改了代码 → **code-reviewer**
+- Bug 修复或新功能 → **tdd-guide**
+- 架构决策 → **architect**
+- 安全敏感代码 → **security-reviewer**
+- 多渠道沟通分类 → **chief-of-staff**
+- 自主循环/循环监控 → **loop-operator**
+- Harness 配置可靠性与成本 → **harness-optimizer**
 
-Use parallel execution for independent operations — launch multiple agents simultaneously.
+独立操作使用并行执行——同时启动多个 agent。
 
-## Security Guidelines
+## 安全指南
 
-**Before ANY commit:**
-- No hardcoded secrets (API keys, passwords, tokens)
-- All user inputs validated
-- SQL injection prevention (parameterized queries)
-- XSS prevention (sanitized HTML)
-- CSRF protection enabled
-- Authentication/authorization verified
-- Rate limiting on all endpoints
-- Error messages don't leak sensitive data
+**提交前必须检查：**
+- 不含硬编码秘密（API key、密码、token）
+- 所有用户输入已验证
+- SQL 注入防护（参数化查询）
+- XSS 防护（HTML 净化）
+- CSRF 保护已启用
+- 身份认证/授权已验证
+- 所有端点有速率限制
+- 错误消息不泄露敏感数据
 
-**Secret management:** NEVER hardcode secrets. Use environment variables or a secret manager. Validate required secrets at startup. Rotate any exposed secrets immediately.
+**秘密管理：** 绝不硬编码秘密。使用环境变量或秘密管理器。启动时验证所需秘密。立即轮换任何暴露的秘密。
 
-**If security issue found:** STOP → use security-reviewer agent → fix CRITICAL issues → rotate exposed secrets → review codebase for similar issues.
+**发现安全问题：** 停止 → 使用 security-reviewer agent → 修复严重问题 → 轮换暴露的秘密 → 检查代码库是否有类似问题。
 
-## Coding Style
+## 编码风格
 
-**Immutability (CRITICAL):** Always create new objects, never mutate. Return new copies with changes applied.
+**不可变性（关键）：** 始终创建新对象，不修改。返回应用了更改的新副本。
 
-**File organization:** Many small files over few large ones. 200-400 lines typical, 800 max. Organize by feature/domain, not by type. High cohesion, low coupling.
+**文件组织：** 多小文件优于少大文件。典型 200-400 行，最多 800 行。按功能/领域组织，非按类型。高内聚，低耦合。
 
-**Error handling:** Handle errors at every level. Provide user-friendly messages in UI code. Log detailed context server-side. Never silently swallow errors.
+**错误处理：** 每层都处理错误。UI 代码中提供用户友好的消息。服务端记录详细上下文。绝不静默吞掉错误。
 
-**Input validation:** Validate all user input at system boundaries. Use schema-based validation. Fail fast with clear messages. Never trust external data.
+**输入验证：** 在系统边界验证所有用户输入。使用基于 schema 的验证。快速失败并给出清晰消息。绝不信任外部数据。
 
-**Code quality checklist:**
-- Functions small (<50 lines), files focused (<800 lines)
-- No deep nesting (>4 levels)
-- Proper error handling, no hardcoded values
-- Readable, well-named identifiers
+**代码质量检查清单：**
+- 函数小（<50 行），文件聚焦（<800 行）
+- 无深层嵌套（>4 层）
+- 适当错误处理，无硬编码值
+- 可读性好，命名清晰
 
-## Testing Requirements
+## 测试要求
 
-**Minimum coverage: 80%**
+**最低覆盖率：80%**
 
-Test types (all required):
-1. **Unit tests** — Individual functions, utilities, components
-2. **Integration tests** — API endpoints, database operations
-3. **E2E tests** — Critical user flows
+测试类型（全部需要）：
+1. **单元测试** — 独立函数、工具、组件
+2. **集成测试** — API 端点、数据库操作
+3. **E2E 测试** — 关键用户流程
 
-**TDD workflow (mandatory):**
-1. Write test first (RED) — test should FAIL
-2. Write minimal implementation (GREEN) — test should PASS
-3. Refactor (IMPROVE) — verify coverage 80%+
+**TDD 工作流（强制）：**
+1. 先写测试（RED）— 测试应失败
+2. 写最小实现（GREEN）— 测试应通过
+3. 重构（IMPROVE）— 验证覆盖率 80%+
 
-Troubleshoot failures: check test isolation → verify mocks → fix implementation (not tests, unless tests are wrong).
+故障排除：检查测试隔离 → 验证 mock → 修复实现（不修测试，除非测试本身有误）。
 
-## Development Workflow
+## 开发工作流
 
-1. **Plan** — Use planner agent, identify dependencies and risks, break into phases
-2. **TDD** — Use tdd-guide agent, write tests first, implement, refactor
-3. **Review** — Use code-reviewer agent immediately, address CRITICAL/HIGH issues
-4. **Capture knowledge in the right place**
-   - Personal debugging notes, preferences, and temporary context → auto memory
-   - Team/project knowledge (architecture decisions, API changes, runbooks) → the project's existing docs structure
-   - If the current task already produces the relevant docs or code comments, do not duplicate the same information elsewhere
-   - If there is no obvious project doc location, ask before creating a new top-level file
-5. **Commit** — Conventional commits format, comprehensive PR summaries
+1. **规划** — 使用 planner agent，识别依赖和风险，分阶段
+2. **TDD** — 使用 tdd-guide agent，先写测试，实现，重构
+3. **审查** — 立即使用 code-reviewer agent，解决严重/高风险问题
+4. **在正确位置保存知识**
+   - 个人调试笔记、偏好和临时上下文 → auto memory
+   - 团队/项目知识（架构决策、API 变更、runbook）→ 项目现有文档结构
+   - 如果当前任务已产出相关文档或代码注释，不在其他地方重复相同信息
+   - 如果没有明显的项目文档位置，先询问再创建新顶级文件
+5. **提交** — 约定式提交格式，全面的 PR 摘要
 
-## Git Workflow
+## Git 工作流
 
-**Commit format:** `<type>: <description>` — Types: feat, fix, refactor, docs, test, chore, perf, ci
+**提交格式：** `<type>: <description>` — 类型：feat, fix, refactor, docs, test, chore, perf, ci
 
-**PR workflow:** Analyze full commit history → draft comprehensive summary → include test plan → push with `-u` flag.
+**PR 工作流：** 分析完整提交历史 → 起草全面摘要 → 包含测试计划 → 使用 `-u` 标志推送。
 
-## Architecture Patterns
+## 架构模式
 
-**API response format:** Consistent envelope with success indicator, data payload, error message, and pagination metadata.
+**API 响应格式：** 一致的外包装，包含成功指示器、数据负载、错误消息和分页元数据。
 
-**Repository pattern:** Encapsulate data access behind standard interface (findAll, findById, create, update, delete). Business logic depends on abstract interface, not storage mechanism.
+**Repository 模式：** 将数据访问封装在标准接口后（findAll、findById、create、update、delete）。业务逻辑依赖抽象接口，而非存储机制。
 
-**Skeleton projects:** Search for battle-tested templates, evaluate with parallel agents (security, extensibility, relevance), clone best match, iterate within proven structure.
+**骨架项目：** 搜索久经考验的模板，使用并行 agent 评估（安全、可扩展性、相关性），克隆最佳匹配，在可靠结构中迭代。
 
-## Performance
+## 性能
 
-**Context management:** Avoid last 20% of context window for large refactoring and multi-file features. Lower-sensitivity tasks (single edits, docs, simple fixes) tolerate higher utilization.
+**上下文管理：** 避免在最后 20% 的上下文窗口中做大重构和多文件功能。低敏感度任务（单次编辑、文档、简单修复）容忍更高利用率。
 
-**Build troubleshooting:** Use build-error-resolver agent → analyze errors → fix incrementally → verify after each fix.
+**构建故障排除：** 使用 build-error-resolver agent → 分析错误 → 逐步修复 → 每次修复后验证。
 
-## Project Structure
+## 项目结构
 
 ```
-agents/          — 30 specialized subagents
-skills/          — 136 workflow skills and domain knowledge
-commands/        — 60 slash commands
-hooks/           — Trigger-based automations
-rules/           — Always-follow guidelines (common + per-language)
-scripts/         — Cross-platform Node.js utilities
-mcp-configs/     — 14 MCP server configurations
-tests/           — Test suite
+agents/          — 30 个专业 subagent
+skills/          — 136 个 workflow skill 和领域知识
+commands/        — 60 个 slash command
+hooks/           — 基于触发器的自动化
+rules/           — 始终遵循的指南（common + per-language）
+scripts/         — 跨平台 Node.js 工具
+mcp-configs/     — 14 个 MCP server 配置
+tests/           — 测试套件
 ```
 
-## Success Metrics
+## 成功指标
 
-- All tests pass with 80%+ coverage
-- No security vulnerabilities
-- Code is readable and maintainable
-- Performance is acceptable
-- User requirements are met
+- 所有测试通过，覆盖率 80%+
+- 无安全漏洞
+- 代码可读、可维护
+- 性能可接受
+- 用户需求已满足

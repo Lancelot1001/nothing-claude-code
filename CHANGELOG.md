@@ -1,120 +1,120 @@
-# Changelog
+# 更新日志
 
 ## 1.9.0 - 2026-03-20
 
-### Highlights
+### 亮点
 
-- Selective install architecture with manifest-driven pipeline and SQLite state store.
-- Language coverage expanded to 10+ ecosystems with 6 new agents and language-specific rules.
-- Observer reliability hardened with memory throttling, sandbox fixes, and 5-layer loop guard.
-- Self-improving skills foundation with skill evolution and session adapters.
+- 选择性安装架构，带 manifest 驱动的管道和 SQLite 状态存储。
+- 语言覆盖扩展到 10+ 个生态，新增 6 个 agent 和语言特定规则。
+- Observer 可靠性加固：内存节流、沙箱修复、5 层循环防护。
+- 自我改进 skills 基础：skill 演进和会话适配器。
 
-### New Agents
+### 新增 Agents
 
-- `typescript-reviewer` — TypeScript/JavaScript code review specialist (#647)
-- `pytorch-build-resolver` — PyTorch runtime, CUDA, and training error resolution (#549)
-- `java-build-resolver` — Maven/Gradle build error resolution (#538)
-- `java-reviewer` — Java and Spring Boot code review (#528)
-- `kotlin-reviewer` — Kotlin/Android/KMP code review (#309)
-- `kotlin-build-resolver` — Kotlin/Gradle build errors (#309)
-- `rust-reviewer` — Rust code review (#523)
-- `rust-build-resolver` — Rust build error resolution (#523)
-- `docs-lookup` — Documentation and API reference research (#529)
+- `typescript-reviewer` — TypeScript/JavaScript 代码审查专家 (#647)
+- `pytorch-build-resolver` — PyTorch 运行时、CUDA 和训练错误解决 (#549)
+- `java-build-resolver` — Maven/Gradle 构建错误解决 (#538)
+- `java-reviewer` — Java 和 Spring Boot 代码审查 (#528)
+- `kotlin-reviewer` — Kotlin/Android/KMP 代码审查 (#309)
+- `kotlin-build-resolver` — Kotlin/Gradle 构建错误 (#309)
+- `rust-reviewer` — Rust 代码审查 (#523)
+- `rust-build-resolver` — Rust 构建错误解决 (#523)
+- `docs-lookup` — 文档和 API 参考研究 (#529)
 
-### New Skills
+### 新增 Skills
 
-- `pytorch-patterns` — PyTorch deep learning workflows (#550)
-- `documentation-lookup` — API reference and library doc research (#529)
-- `bun-runtime` — Bun runtime patterns (#529)
-- `nextjs-turbopack` — Next.js Turbopack workflows (#529)
-- `mcp-server-patterns` — MCP server design patterns (#531)
-- `data-scraper-agent` — AI-powered public data collection (#503)
-- `team-builder` — Team composition skill (#501)
-- `ai-regression-testing` — AI regression test workflows (#433)
-- `claude-devfleet` — Multi-agent orchestration (#505)
-- `blueprint` — Multi-session construction planning
-- `everything-claude-code` — Self-referential ECC skill (#335)
-- `prompt-optimizer` — Prompt optimization skill (#418)
-- 8 Evos operational domain skills (#290)
-- 3 Laravel skills (#420)
+- `pytorch-patterns` — PyTorch 深度学习工作流 (#550)
+- `documentation-lookup` — API 参考和库文档研究 (#529)
+- `bun-runtime` — Bun 运行时模式 (#529)
+- `nextjs-turbopack` — Next.js Turbopack 工作流 (#529)
+- `mcp-server-patterns` — MCP server 设计模式 (#531)
+- `data-scraper-agent` — AI 驱动的公共数据收集 (#503)
+- `team-builder` — 团队组成 skill (#501)
+- `ai-regression-testing` — AI 回归测试工作流 (#433)
+- `claude-devfleet` — 多 agent 编排 (#505)
+- `blueprint` — 多会话构建规划
+- `everything-claude-code` — 自引用的 ECC skill (#335)
+- `prompt-optimizer` — Prompt 优化 skill (#418)
+- 8 个 Evo 操作领域 skills (#290)
+- 3 个 Laravel skills (#420)
 - VideoDB skills (#301)
 
-### New Commands
+### 新增 Commands
 
-- `/docs` — Documentation lookup (#530)
-- `/aside` — Side conversation (#407)
-- `/prompt-optimize` — Prompt optimization (#418)
-- `/resume-session`, `/save-session` — Session management
-- `learn-eval` improvements with checklist-based holistic verdict
+- `/docs` — 文档查询 (#530)
+- `/aside` — 附带对话 (#407)
+- `/prompt-optimize` — Prompt 优化 (#418)
+- `/resume-session`、`/save-session` — 会话管理
+- `learn-eval` 改进：基于检查清单的全面裁决
 
-### New Rules
+### 新增 Rules
 
-- Java language rules (#645)
-- PHP rule pack (#389)
-- Perl language rules and skills (patterns, security, testing)
-- Kotlin/Android/KMP rules (#309)
-- C++ language support (#539)
-- Rust language support (#523)
+- Java 语言规则 (#645)
+- PHP 规则包 (#389)
+- Perl 语言规则和 skills（模式、安全、测试）
+- Kotlin/Android/KMP 规则 (#309)
+- C++ 语言支持 (#539)
+- Rust 语言支持 (#523)
 
-### Infrastructure
+### 基础设施
 
-- Selective install architecture with manifest resolution (`install-plan.js`, `install-apply.js`) (#509, #512)
-- SQLite state store with query CLI for tracking installed components (#510)
-- Session adapters for structured session recording (#511)
-- Skill evolution foundation for self-improving skills (#514)
-- Orchestration harness with deterministic scoring (#524)
-- Catalog count enforcement in CI (#525)
-- Install manifest validation for all 109 skills (#537)
-- PowerShell installer wrapper (#532)
-- Antigravity IDE support via `--target antigravity` flag (#332)
-- Codex CLI customization scripts (#336)
+- 选择性安装架构，带 manifest 解析（`install-plan.js`、`install-apply.js`）(#509, #512)
+- SQLite 状态存储，带查询 CLI 用于跟踪已安装组件 (#510)
+- 结构化会话记录的会话适配器 (#511)
+- 自我改进 skills 的 Skill 演进基础 (#514)
+- 带确定性评分的编排 harness (#524)
+- CI 中的目录计数强制 (#525)
+- 所有 109 个 skills 的安装 manifest 验证 (#537)
+- PowerShell 安装器包装 (#532)
+- 通过 `--target antigravity` 标志支持 Antigravity IDE (#332)
+- Codex CLI 自定义脚本 (#336)
 
-### Bug Fixes
+### Bug 修复
 
-- Resolved 19 CI test failures across 6 files (#519)
-- Fixed 8 test failures in install pipeline, orchestrator, and repair (#564)
-- Observer memory explosion with throttling, re-entrancy guard, and tail sampling (#536)
-- Observer sandbox access fix for Haiku invocation (#661)
-- Worktree project ID mismatch fix (#665)
-- Observer lazy-start logic (#508)
-- Observer 5-layer loop prevention guard (#399)
-- Hook portability and Windows .cmd support
-- Biome hook optimization — eliminated npx overhead (#359)
-- InsAIts security hook made opt-in (#370)
-- Windows spawnSync export fix (#431)
-- UTF-8 encoding fix for instinct CLI (#353)
-- Secret scrubbing in hooks (#348)
+- 解决跨 6 个文件的 19 个 CI 测试失败 (#519)
+- 修复安装管道、编排器和修复中的 8 个测试失败 (#564)
+- Observer 内存爆炸问题：节流、重入防护、尾部采样 (#536)
+- Observer 沙箱 Haiku 调用访问修复 (#661)
+- Worktree 项目 ID 不匹配修复 (#665)
+- Observer 延迟启动逻辑 (#508)
+- Observer 5 层循环防护 (#399)
+- Hook 可移植性和 Windows .cmd 支持
+- Biome hook 优化 — 消除 npx 开销 (#359)
+- InsAIts 安全 hook 改为可选 (#370)
+- Windows spawnSync 导出修复 (#431)
+- Instinct CLI 的 UTF-8 编码修复 (#353)
+- Hook 中的秘密清理 (#348)
 
-### Translations
+### 翻译
 
-- Korean (ko-KR) translation — README, agents, commands, skills, rules (#392)
-- Chinese (zh-CN) documentation sync (#428)
+- 韩语 (ko-KR) 翻译 — README、agents、commands、skills、rules (#392)
+- 中文 (zh-CN) 文档同步 (#428)
 
-### Credits
+### 致谢
 
-- @ymdvsymd — observer sandbox and worktree fixes
-- @pythonstrup — biome hook optimization
-- @Nomadu27 — InsAIts security hook
-- @hahmee — Korean translation
-- @zdocapp — Chinese translation sync
-- @cookiee339 — Kotlin ecosystem
-- @pangerlkr — CI workflow fixes
+- @ymdvsymd — observer 沙箱和 worktree 修复
+- @pythonstrup — biome hook 优化
+- @Nomadu27 — InsAIts 安全 hook
+- @hahmee — 韩语翻译
+- @zdocapp — 中文翻译同步
+- @cookiee339 — Kotlin 生态
+- @pangerlkr — CI 工作流修复
 - @0xrohitgarg — VideoDB skills
-- @nocodemf — Evos operational skills
-- @swarnika-cmd — community contributions
+- @nocodemf — Evo 操作 skills
+- @swarnika-cmd — 社区贡献
 
 ## 1.8.0 - 2026-03-04
 
-### Highlights
+### 亮点
 
-- Harness-first release focused on reliability, eval discipline, and autonomous loop operations.
-- Hook runtime now supports profile-based control and targeted hook disabling.
-- NanoClaw v2 adds model routing, skill hot-load, branching, search, compaction, export, and metrics.
+- 首个 Harness 优先版本，专注于可靠性、评估规范和自主循环操作。
+- Hook 运行时现在支持基于配置文件的控制和定向 hook 禁用。
+- NanoClaw v2 新增模型路由、skill 热加载、分支、搜索、压缩、导出和指标。
 
-### Core
+### 核心
 
-- Added new commands: `/harness-audit`, `/loop-start`, `/loop-status`, `/quality-gate`, `/model-route`.
-- Added new skills:
+- 新增命令：`/harness-audit`、`/loop-start`、`/loop-status`、`/quality-gate`、`/model-route`。
+- 新增 skills：
   - `agent-harness-construction`
   - `agentic-engineering`
   - `ralphinho-rfc-pipeline`
@@ -122,28 +122,28 @@
   - `enterprise-agent-ops`
   - `nanoclaw-repl`
   - `continuous-agent-loop`
-- Added new agents:
+- 新增 agents：
   - `harness-optimizer`
   - `loop-operator`
 
-### Hook Reliability
+### Hook 可靠性
 
-- Fixed SessionStart root resolution with robust fallback search.
-- Moved session summary persistence to `Stop` where transcript payload is available.
-- Added quality-gate and cost-tracker hooks.
-- Replaced fragile inline hook one-liners with dedicated script files.
-- Added `ECC_HOOK_PROFILE` and `ECC_DISABLED_HOOKS` controls.
+- 修复带健壮回退搜索的 SessionStart 根解析。
+- 将会话摘要持久化移至 `Stop`，此处有 transcript payload。
+- 新增 quality-gate 和 cost-tracker hooks。
+- 用专用脚本文件替换脆弱的内联 hook 单行命令。
+- 新增 `ECC_HOOK_PROFILE` 和 `ECC_DISABLED_HOOKS` 控制。
 
-### Cross-Platform
+### 跨平台
 
-- Improved Windows-safe path handling in doc warning logic.
-- Hardened observer loop behavior to avoid non-interactive hangs.
+- 改进文档警告逻辑中 Windows 安全路径处理。
+- 加固 observer 循环行为以避免非交互式挂起。
 
-### Notes
+### 说明
 
-- `autonomous-loops` is kept as a compatibility alias for one release; `continuous-agent-loop` is the canonical name.
+- `autonomous-loops` 作为兼容别名保留一个版本；`continuous-agent-loop` 是规范名称。
 
-### Credits
+### 致谢
 
-- inspired by [zarazhangrui](https://github.com/zarazhangrui)
-- homunculus-inspired by [humanplane](https://github.com/humanplane)
+- 灵感来自 [zarazhangrui](https://github.com/zarazhangrui)
+- homunculus 灵感来自 [humanplane](https://github.com/humanplane)

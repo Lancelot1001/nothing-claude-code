@@ -1,159 +1,159 @@
-# Commands Quick Reference
+# 命令速查表
 
-> 59 slash commands installed globally. Type `/` in any Claude Code session to invoke.
+> 59 个 slash command 全局安装。在任意 Claude Code 会话中输入 `/` 即可调用。
 
 ---
 
-## Core Workflow
+## 核心工作流
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/plan` | Restate requirements, assess risks, write step-by-step implementation plan — **waits for your confirm before touching code** |
-| `/tdd` | Enforce test-driven development: scaffold interface → write failing test → implement → verify 80%+ coverage |
-| `/code-review` | Full code quality, security, and maintainability review of changed files |
-| `/build-fix` | Detect and fix build errors — delegates to the right build-resolver agent automatically |
-| `/verify` | Run the full verification loop: build → lint → test → type-check |
-| `/quality-gate` | Quality gate check against project standards |
+| `/plan` | 重述需求，评估风险，编写分步实施计划 — **在触碰代码之前等待确认** |
+| `/tdd` | 强制测试驱动开发：搭建接口 → 写失败测试 → 实现 → 验证 80%+ 覆盖率 |
+| `/code-review` | 对变更文件的全面代码质量、安全性和可维护性审查 |
+| `/build-fix` | 检测并修复构建错误 — 自动委托给正确的 build-resolver agent |
+| `/verify` | 运行完整验证循环：构建 → lint → 测试 → 类型检查 |
+| `/quality-gate` | 对照项目标准进行质量门检查 |
 
 ---
 
-## Testing
+## 测试
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/tdd` | Universal TDD workflow (any language) |
-| `/e2e` | Generate + run Playwright end-to-end tests, capture screenshots/videos/traces |
-| `/test-coverage` | Report test coverage, identify gaps |
-| `/go-test` | TDD workflow for Go (table-driven, 80%+ coverage with `go test -cover`) |
-| `/kotlin-test` | TDD for Kotlin (Kotest + Kover) |
-| `/rust-test` | TDD for Rust (cargo test, integration tests) |
-| `/cpp-test` | TDD for C++ (GoogleTest + gcov/lcov) |
+| `/tdd` | 通用 TDD 工作流（任意语言） |
+| `/e2e` | 生成并运行 Playwright 端到端测试，捕获截图/视频/traces |
+| `/test-coverage` | 报告测试覆盖率，识别缺口 |
+| `/go-test` | Go 的 TDD 工作流（表驱动，`go test -cover` 达到 80%+） |
+| `/kotlin-test` | Kotlin 的 TDD（Kotest + Kover） |
+| `/rust-test` | Rust 的 TDD（cargo test，集成测试） |
+| `/cpp-test` | C++ 的 TDD（GoogleTest + gcov/lcov） |
 
 ---
 
-## Code Review
+## 代码审查
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/code-review` | Universal code review |
-| `/python-review` | Python — PEP 8, type hints, security, idiomatic patterns |
-| `/go-review` | Go — idiomatic patterns, concurrency safety, error handling |
-| `/kotlin-review` | Kotlin — null safety, coroutine safety, clean architecture |
-| `/rust-review` | Rust — ownership, lifetimes, unsafe usage |
-| `/cpp-review` | C++ — memory safety, modern idioms, concurrency |
+| `/code-review` | 通用代码审查 |
+| `/python-review` | Python — PEP 8、类型提示、安全、惯用模式 |
+| `/go-review` | Go — 惯用模式、并发安全、错误处理 |
+| `/kotlin-review` | Kotlin — 空安全、协程安全、清晰架构 |
+| `/rust-review` | Rust — 所有权、生命周期、unsafe 用法 |
+| `/cpp-review` | C++ — 内存安全、现代惯用模式、并发 |
 
 ---
 
-## Build Fixers
+## 构建修复
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/build-fix` | Auto-detect language and fix build errors |
-| `/go-build` | Fix Go build errors and `go vet` warnings |
-| `/kotlin-build` | Fix Kotlin/Gradle compiler errors |
-| `/rust-build` | Fix Rust build + borrow checker issues |
-| `/cpp-build` | Fix C++ CMake and linker problems |
-| `/gradle-build` | Fix Gradle errors for Android / KMP |
+| `/build-fix` | 自动检测语言并修复构建错误 |
+| `/go-build` | 修复 Go 构建错误和 `go vet` 警告 |
+| `/kotlin-build` | 修复 Kotlin/Gradle 编译器错误 |
+| `/rust-build` | 修复 Rust 构建 + 借用检查器问题 |
+| `/cpp-build` | 修复 C++ CMake 和链接器问题 |
+| `/gradle-build` | 修复 Android / KMP 的 Gradle 错误 |
 
 ---
 
-## Planning & Architecture
+## 规划与架构
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/plan` | Implementation plan with risk assessment |
-| `/multi-plan` | Multi-model collaborative planning |
-| `/multi-workflow` | Multi-model collaborative development |
-| `/multi-backend` | Backend-focused multi-model development |
-| `/multi-frontend` | Frontend-focused multi-model development |
-| `/multi-execute` | Multi-model collaborative execution |
-| `/orchestrate` | Guide for tmux/worktree multi-agent orchestration |
-| `/devfleet` | Orchestrate parallel Claude Code agents via DevFleet |
+| `/plan` | 含风险评估的实施计划 |
+| `/multi-plan` | 多模型协作规划 |
+| `/multi-workflow` | 多模型协作开发 |
+| `/multi-backend` | 后端优先的多模型开发 |
+| `/multi-frontend` | 前端优先的多模型开发 |
+| `/multi-execute` | 多模型协作执行 |
+| `/orchestrate` | tmux/worktree 多 agent 编排指南 |
+| `/devfleet` | 通过 DevFleet 编排并行 Claude Code agent |
 
 ---
 
-## Session Management
+## 会话管理
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/save-session` | Save current session state to `~/.claude/session-data/` |
-| `/resume-session` | Load the most recent saved session from the canonical session store and resume from where you left off |
-| `/sessions` | Browse, search, and manage session history with aliases from `~/.claude/session-data/` (with legacy reads from `~/.claude/sessions/`) |
-| `/checkpoint` | Mark a checkpoint in the current session |
-| `/aside` | Answer a quick side question without losing current task context |
-| `/context-budget` | Analyse context window usage — find token overhead, optimise |
+| `/save-session` | 将当前会话状态保存到 `~/.claude/session-data/` |
+| `/resume-session` | 从规范会话存储加载最近保存的会话，从中断处继续 |
+| `/sessions` | 浏览、搜索和管理会话历史，别名来自 `~/.claude/session-data/`（同时从 `~/.claude/sessions/` 读取旧数据） |
+| `/checkpoint` | 在当前会话中标记检查点 |
+| `/aside` | 快速回答附带问题，不丢失当前任务上下文 |
+| `/context-budget` | 分析上下文窗口使用情况 — 找出 token 开销，优化 |
 
 ---
 
-## Learning & Improvement
+## 学习与改进
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/learn` | Extract reusable patterns from the current session |
-| `/learn-eval` | Extract patterns + self-evaluate quality before saving |
-| `/evolve` | Analyse learned instincts, suggest evolved skill structures |
-| `/promote` | Promote project-scoped instincts to global scope |
-| `/instinct-status` | Show all learned instincts (project + global) with confidence scores |
-| `/instinct-export` | Export instincts to a file |
-| `/instinct-import` | Import instincts from a file or URL |
-| `/skill-create` | Analyse local git history → generate a reusable skill |
-| `/skill-health` | Skill portfolio health dashboard with analytics |
-| `/rules-distill` | Scan skills, extract cross-cutting principles, distill into rules |
+| `/learn` | 从当前会话提取可重用模式 |
+| `/learn-eval` | 提取模式 + 保存前自我评估质量 |
+| `/evolve` | 分析学到的 instinct，建议改进的 skill 结构 |
+| `/promote` | 将项目范围的 instinct 提升为全局范围 |
+| `/instinct-status` | 显示所有学到的 instinct（项目 + 全局）及置信度分数 |
+| `/instinct-export` | 将 instinct 导出到文件 |
+| `/instinct-import` | 从文件或 URL 导入 instinct |
+| `/skill-create` | 分析本地 git 历史 → 生成可重用 skill |
+| `/skill-health` | Skill 组合健康仪表板及分析 |
+| `/rules-distill` | 扫描 skill，提取横切原则，归入 rules |
 
 ---
 
-## Refactoring & Cleanup
+## 重构与清理
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/refactor-clean` | Remove dead code, consolidate duplicates, clean up structure |
-| `/prompt-optimize` | Analyse a draft prompt and output an optimised ECC-enriched version |
+| `/refactor-clean` | 移除死代码，合并重复项，清理结构 |
+| `/prompt-optimize` | 分析草稿 prompt 并输出优化后的 ECC 增强版本 |
 
 ---
 
-## Docs & Research
+## 文档与研究
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/docs` | Look up current library/API documentation via Context7 |
-| `/update-docs` | Update project documentation |
-| `/update-codemaps` | Regenerate codemaps for the codebase |
+| `/docs` | 通过 Context7 查询当前库/API 文档 |
+| `/update-docs` | 更新项目文档 |
+| `/update-codemaps` | 重新生成代码库的代码地图 |
 
 ---
 
-## Loops & Automation
+## 循环与自动化
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/loop-start` | Start a recurring agent loop on an interval |
-| `/loop-status` | Check status of running loops |
-| `/claw` | Start NanoClaw v2 — persistent REPL with model routing, skill hot-load, branching, and metrics |
+| `/loop-start` | 在间隔上启动重复 agent 循环 |
+| `/loop-status` | 检查运行中循环的状态 |
+| `/claw` | 启动 NanoClaw v2 — 持久化 REPL，支持模型路由、skill 热加载、分支和指标 |
 
 ---
 
-## Project & Infrastructure
+## 项目与基础设施
 
-| Command | What it does |
+| Command | 功能 |
 |---------|-------------|
-| `/projects` | List known projects and their instinct statistics |
-| `/harness-audit` | Audit the agent harness configuration for reliability and cost |
-| `/eval` | Run the evaluation harness |
-| `/model-route` | Route a task to the right model (Haiku / Sonnet / Opus) |
-| `/pm2` | PM2 process manager initialisation |
-| `/setup-pm` | Configure package manager (npm / pnpm / yarn / bun) |
+| `/projects` | 列出已知项目及其 instinct 统计 |
+| `/harness-audit` | 审计 agent harness 配置的可靠性和成本 |
+| `/eval` | 运行评估 harness |
+| `/model-route` | 将任务路由到正确的模型（Haiku / Sonnet / Opus） |
+| `/pm2` | PM2 进程管理器初始化 |
+| `/setup-pm` | 配置包管理器（npm / pnpm / yarn / bun） |
 
 ---
 
-## Quick Decision Guide
+## 快速决策指南
 
 ```
-Starting a new feature?         → /plan first, then /tdd
-Code just written?              → /code-review
-Build broken?                   → /build-fix
-Need live docs?                 → /docs <library>
-Session about to end?           → /save-session or /learn-eval
-Resuming next day?              → /resume-session
-Context getting heavy?          → /context-budget then /checkpoint
-Want to extract what you learned? → /learn-eval then /evolve
-Running repeated tasks?         → /loop-start
+开始新功能？                → 先 /plan，再 /tdd
+刚写完代码？               → /code-review
+构建坏了？                 → /build-fix
+需要实时文档？             → /docs <库名>
+会话即将结束？             → /save-session 或 /learn-eval
+第二天继续？               → /resume-session
+上下文太重？               → /context-budget 然后 /checkpoint
+想提取学到的知识？         → /learn-eval 然后 /evolve
+运行重复任务？             → /loop-start
 ```
